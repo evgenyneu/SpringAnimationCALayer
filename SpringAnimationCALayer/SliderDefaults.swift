@@ -14,8 +14,8 @@ struct SliderDefaults {
   let maximumValue: Float
 
   static func set(slider: UISlider, defaults: SliderDefaults) {
-    slider.value = defaults.value
     slider.minimumValue = defaults.minimumValue
     slider.maximumValue = defaults.maximumValue
+    slider.value = defaults.value
   }
 }

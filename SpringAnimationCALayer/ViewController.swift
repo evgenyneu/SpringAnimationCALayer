@@ -16,16 +16,15 @@ class ViewController: UIViewController {
 
   let objectSize: CGFloat = 50
 
+  // Duration
   @IBOutlet weak var durationLabel: UILabel!
   @IBOutlet weak var durationSlider: UISlider!
-  let durationSliderDefaults = SliderDefaults(value: 2,
-    minimumValue: 0.01, maximumValue: 5.0)
+  let durationSliderDefaults = SliderDefaults(value: 2, minimumValue: 0.01, maximumValue: 5.0)
 
+  // Damping
   @IBOutlet weak var dampingLabel: UILabel!
   @IBOutlet weak var dampingSlider: UISlider!
-  let dampingSliderDefaults = SliderDefaults(value: 2,
-    minimumValue: 0.01, maximumValue: 5.0)
-
+  let dampingSliderDefaults = SliderDefaults(value: 0.5, minimumValue: 0.01, maximumValue: 1.0)
 
   var objectOne: UIView!
 
@@ -42,7 +41,6 @@ class ViewController: UIViewController {
 
     objectOne.backgroundColor = UIColor.blueColor()
     viewOneContainer.addSubview(objectOne)
-
 
     // Duration
     SliderDefaults.set(durationSlider, defaults: durationSliderDefaults)
