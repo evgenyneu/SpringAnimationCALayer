@@ -13,6 +13,7 @@
 		2BE88D681A04412400FF13D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE88D671A04412400FF13D5 /* Images.xcassets */; };
 		2BE88D6B1A04412400FF13D5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE88D691A04412400FF13D5 /* LaunchScreen.xib */; };
 		2BE88D771A04412400FF13D5 /* SpringAnimationCALayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D761A04412400FF13D5 /* SpringAnimationCALayerTests.swift */; };
+		2BE88D811A04472A00FF13D5 /* SliderDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D801A04472A00FF13D5 /* SliderDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		2BE88D701A04412400FF13D5 /* SpringAnimationCALayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpringAnimationCALayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE88D751A04412400FF13D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BE88D761A04412400FF13D5 /* SpringAnimationCALayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringAnimationCALayerTests.swift; sourceTree = "<group>"; };
+		2BE88D801A04472A00FF13D5 /* SliderDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				2BE88D601A04412400FF13D5 /* AppDelegate.swift */,
 				2BE88D621A04412400FF13D5 /* ViewController.swift */,
 				2BE88D641A04412400FF13D5 /* Main.storyboard */,
+				2BE88D801A04472A00FF13D5 /* SliderDefaults.swift */,
 				2BE88D671A04412400FF13D5 /* Images.xcassets */,
 				2BE88D691A04412400FF13D5 /* LaunchScreen.xib */,
 				2BE88D5E1A04412400FF13D5 /* Supporting Files */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BE88D811A04472A00FF13D5 /* SliderDefaults.swift in Sources */,
 				2BE88D631A04412400FF13D5 /* ViewController.swift in Sources */,
 				2BE88D611A04412400FF13D5 /* AppDelegate.swift in Sources */,
 			);
@@ -407,6 +411,7 @@
 				2BE88D7C1A04412400FF13D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2BE88D7D1A04412400FF13D5 /* Build configuration list for PBXNativeTarget "SpringAnimationCALayerTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +420,7 @@
 				2BE88D7F1A04412400FF13D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
