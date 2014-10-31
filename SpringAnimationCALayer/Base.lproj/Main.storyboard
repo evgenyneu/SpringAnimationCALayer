@@ -24,11 +24,19 @@
                                     <constraint firstAttribute="height" constant="50" id="jvV-zG-fq4"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFD-TD-7uv" userLabel="controls view">
+                                <rect key="frame" x="16" y="78" width="568" height="522"/>
+                                <color key="backgroundColor" red="0.85784556878306883" green="0.80498578323257053" blue="0.51884949044936357" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bf1-Ev-ZEy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="IJ0-a4-zza"/>
+                            <constraint firstItem="mFD-TD-7uv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ITA-F8-iFc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bf1-Ev-ZEy" secondAttribute="trailing" id="TGv-SM-S6r"/>
+                            <constraint firstItem="mFD-TD-7uv" firstAttribute="top" secondItem="bf1-Ev-ZEy" secondAttribute="bottom" id="UR6-MB-v27"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mFD-TD-7uv" secondAttribute="trailing" id="bZX-ng-5Oj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mFD-TD-7uv" secondAttribute="bottom" id="jMg-3b-vDn"/>
                             <constraint firstItem="bf1-Ev-ZEy" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="vbD-xR-W0a"/>
                         </constraints>
                     </view>
