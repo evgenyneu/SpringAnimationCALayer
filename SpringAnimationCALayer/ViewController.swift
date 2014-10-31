@@ -11,20 +11,27 @@ import UIKit
 class ViewController: UIViewController {
   @IBOutlet weak var controlsContainer: UIView!
   @IBOutlet weak var viewOneContainer: UIView!
-  @IBOutlet weak var durationContainer: UIView!
-  @IBOutlet weak var dampingContainer: UIView!
 
   let objectSize: CGFloat = 50
 
   // Duration
+  @IBOutlet weak var durationContainer: UIView!
   @IBOutlet weak var durationLabel: UILabel!
   @IBOutlet weak var durationSlider: UISlider!
   let durationSliderDefaults = SliderDefaults(value: 2, minimumValue: 0.01, maximumValue: 5.0)
 
   // Damping
+  @IBOutlet weak var dampingContainer: UIView!
   @IBOutlet weak var dampingLabel: UILabel!
   @IBOutlet weak var dampingSlider: UISlider!
-  let dampingSliderDefaults = SliderDefaults(value: 0.5, minimumValue: 0.01, maximumValue: 1.0)
+  let dampingSliderDefaults = SliderDefaults(value: 0.5, minimumValue: 0.01, maximumValue: 5.0)
+
+  // Initial velocity
+  @IBOutlet weak var initialVelocityContainer: UIView!
+  @IBOutlet weak var initialVelocityLabel: UILabel!
+  @IBOutlet weak var initialVelocitySlider: UISlider!
+  let initialVelocutySliderDefaults = SliderDefaults(value: 0.5, minimumValue: 0.01, maximumValue: 10.0)
+
 
   var objectOne: UIView!
 
@@ -35,6 +42,7 @@ class ViewController: UIViewController {
     viewOneContainer.backgroundColor = nil
     durationContainer.backgroundColor = nil
     dampingContainer.backgroundColor = nil
+    initialVelocityContainer.backgroundColor = nil
 
     objectOne = UIView(frame: CGRect(origin: CGPoint(),
       size: CGSize(width: objectSize, height: objectSize)))
@@ -49,6 +57,10 @@ class ViewController: UIViewController {
     // Damping
     SliderDefaults.set(dampingSlider, defaults: dampingSliderDefaults)
     onDampingSliderChanged(dampingSlider)
+
+    // Initial velocity
+    SliderDefaults.set(initialVelocitySlider, defaults: initialVelocutySliderDefaults)
+    onInitialVelocitySliderChanged(initialVelocitySlider)
   }
 
   func animate() {
@@ -57,7 +69,7 @@ class ViewController: UIViewController {
     UIView.animateWithDuration(NSTimeInterval(durationSlider.value),
       delay: 0,
       usingSpringWithDamping: CGFloat(dampingSlider.value),
-      initialSpringVelocity: 1,
+      initialSpringVelocity: CGFloat(initialVelocitySlider.value),
       options: nil,
       animations: {
         let newCenterY = self.viewOneContainer.bounds.height / 2
@@ -67,25 +79,28 @@ class ViewController: UIViewController {
   }
 
 
-  // Duration
-  // --------------
-  @IBAction func onDurationSliderChanged(sender: AnyObject) {
-    if let slider = sender as? UISlider {
-      updateSliderLabel(slider,label: durationLabel, caption: "Duration")
-    }
-  }
-
   @IBAction func durationSliderChangeEnd(sender: AnyObject) {
     animate()
   }
 
-  // Damping
-  // --------------
-  @IBAction func onDampingSliderChanged(sender: AnyObject) {
+  @IBAction func onDurationSliderChanged(sender: AnyObject) {
     if let slider = sender as? UISlider {
-      updateSliderLabel(slider,label: dampingLabel, caption: "Damping")
+      updateSliderLabel(slider, label: durationLabel, caption: "Duration")
     }
   }
+
+  @IBAction func onDampingSliderChanged(sender: AnyObject) {
+    if let slider = sender as? UISlider {
+      updateSliderLabel(slider, label: dampingLabel, caption: "Damping")
+    }
+  }
+
+  @IBAction func onInitialVelocitySliderChanged(sender: AnyObject) {
+    if let slider = sender as? UISlider {
+      updateSliderLabel(slider, label: initialVelocityLabel, caption: "Initial velocity")
+    }
+  }
+
 
   func updateSliderLabel(slider: UISlider, label: UILabel, caption: String) {
     label.text = "\(caption): \(formatValue(slider.value))"
