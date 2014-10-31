@@ -85,7 +85,7 @@
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial velocity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODA-Wy-y1r">
-                                                <rect key="frame" x="0.0" y="16" width="104" height="21"/>
+                                                <rect key="frame" x="0.0" y="16" width="103.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -101,11 +101,23 @@
                                             <constraint firstItem="ODA-Wy-y1r" firstAttribute="leading" secondItem="GUJ-gY-ekO" secondAttribute="leading" id="tKZ-XO-fvi"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzw-aB-bV2">
+                                        <rect key="frame" x="206" y="331" width="48" height="55"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <state key="normal" title="Go">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onGoTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="511-5z-loz"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85784556878306883" green="0.80498578323257053" blue="0.51884949044936357" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="GUJ-gY-ekO" firstAttribute="top" secondItem="Apb-9h-7xH" secondAttribute="bottom" constant="8" symbolic="YES" id="1oy-eT-N8D"/>
                                     <constraint firstItem="Pb2-d5-m5H" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="leading" id="ElP-UY-5rH"/>
+                                    <constraint firstAttribute="centerX" secondItem="jzw-aB-bV2" secondAttribute="centerX" id="HkV-wD-PPi"/>
+                                    <constraint firstItem="jzw-aB-bV2" firstAttribute="top" secondItem="GUJ-gY-ekO" secondAttribute="bottom" constant="15" id="IKJ-o9-doK"/>
                                     <constraint firstAttribute="trailing" secondItem="GUJ-gY-ekO" secondAttribute="trailing" id="MKf-g2-8GM"/>
                                     <constraint firstItem="GUJ-gY-ekO" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="leading" id="UFP-cv-BpY"/>
                                     <constraint firstItem="Apb-9h-7xH" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="leading" id="aB5-EL-Ldg"/>

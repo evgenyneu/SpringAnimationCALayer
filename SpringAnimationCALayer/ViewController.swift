@@ -24,13 +24,13 @@ class ViewController: UIViewController {
   @IBOutlet weak var dampingContainer: UIView!
   @IBOutlet weak var dampingLabel: UILabel!
   @IBOutlet weak var dampingSlider: UISlider!
-  let dampingSliderDefaults = SliderDefaults(value: 0.5, minimumValue: 0.01, maximumValue: 5.0)
+  let dampingSliderDefaults = SliderDefaults(value: 0.3, minimumValue: 0.01, maximumValue: 5.0)
 
   // Initial velocity
   @IBOutlet weak var initialVelocityContainer: UIView!
   @IBOutlet weak var initialVelocityLabel: UILabel!
   @IBOutlet weak var initialVelocitySlider: UISlider!
-  let initialVelocutySliderDefaults = SliderDefaults(value: 0.5, minimumValue: 0.01, maximumValue: 10.0)
+  let initialVelocutySliderDefaults = SliderDefaults(value: 5.0, minimumValue: 0.01, maximumValue: 10.0)
 
 
   var objectOne: UIView!
@@ -78,6 +78,9 @@ class ViewController: UIViewController {
       completion: nil)
   }
 
+  @IBAction func onGoTapped(sender: AnyObject) {
+    animate()
+  }
 
   @IBAction func durationSliderChangeEnd(sender: AnyObject) {
     animate()
