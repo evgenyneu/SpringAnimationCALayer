@@ -25,7 +25,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var dampingContainer: UIView!
   @IBOutlet weak var dampingLabel: UILabel!
   @IBOutlet weak var dampingSlider: UISlider!
-  let dampingSliderDefaults = SliderDefaults(value: 0.3, minimumValue: 0.01, maximumValue: 0.6)
+  let dampingSliderDefaults = SliderDefaults(value: 0.1, minimumValue: 0.01, maximumValue: 0.6)
 
   // Initial velocity
   @IBOutlet weak var initialVelocityContainer: UIView!
@@ -43,7 +43,13 @@ class ViewController: UIViewController {
   @IBOutlet weak var velocityMultiplierContains: UIView!
   @IBOutlet weak var velocityMultiplierLabel: UILabel!
   @IBOutlet weak var velocityMultiplierSlider: UISlider!
-  let velocityMultiplierSliderDefaults = SliderDefaults(value: 9.1, minimumValue: 9, maximumValue: 9.2)
+  let velocityMultiplierSliderDefaults = SliderDefaults(value: 9.2, minimumValue: 7, maximumValue: 12)
+
+  // A
+  @IBOutlet weak var aMultiplierContains: UIView!
+  @IBOutlet weak var aMultiplierLabel: UILabel!
+  @IBOutlet weak var aMultiplierSlider: UISlider!
+  let aMultiplierSliderDefaults = SliderDefaults(value: 10, minimumValue: 5, maximumValue: 100)
 
 
   var objectOne: UIView!
@@ -77,6 +83,10 @@ class ViewController: UIViewController {
     // Velocity multiplier
     SliderDefaults.set(velocityMultiplierSlider, defaults: velocityMultiplierSliderDefaults)
     onVelocityMultiplierSliderChanged(velocityMultiplierSlider)
+
+    // A
+    SliderDefaults.set(aMultiplierSlider, defaults: aMultiplierSliderDefaults)
+    onAMultiplierSliderChanged(aMultiplierSlider)
   }
 
   private func createObjectOne() {
@@ -112,6 +122,7 @@ class ViewController: UIViewController {
     initialVelocityContainer.backgroundColor = nil
     dampingMultiplierContains.backgroundColor = nil
     velocityMultiplierContains.backgroundColor = nil
+    aMultiplierContains.backgroundColor = nil
   }
 
   private func animate() {
@@ -173,7 +184,8 @@ class ViewController: UIViewController {
 
   private func springValueNormalized(x: Double, damping: Double, initialVelocity: Double) -> Double {
 
-    return pow(M_E, -pow(damping,1) * x) * cos(M_E * initialVelocity * x / damping)
+    let A = Double(aMultiplierSlider.value)
+    return pow(M_E, -2.6 * pow(damping, 0.1) * x) * cos(A * pow(initialVelocity,0.1) * x / damping)
   }
 
   @IBAction func onGoTapped(sender: AnyObject) {
@@ -211,6 +223,12 @@ class ViewController: UIViewController {
   @IBAction func onVelocityMultiplierSliderChanged(sender: AnyObject) {
     if let slider = sender as? UISlider {
       updateSliderLabel(slider, label: velocityMultiplierLabel, caption: "Velocity multiplier")
+    }
+  }
+
+  @IBAction func onAMultiplierSliderChanged(sender: AnyObject) {
+    if let slider = sender as? UISlider {
+      updateSliderLabel(slider, label: aMultiplierLabel, caption: "A")
     }
   }
 

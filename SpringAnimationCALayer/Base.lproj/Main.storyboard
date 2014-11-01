@@ -165,6 +165,33 @@
                                             <constraint firstItem="i3T-tC-1I0" firstAttribute="top" secondItem="e7c-bn-geO" secondAttribute="top" constant="16" id="yQZ-nq-GSr"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gD0-h9-tnx" userLabel="controls container">
+                                        <rect key="frame" x="38" y="308" width="347" height="91"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hbm-El-NwU">
+                                                <rect key="frame" x="-2" y="41" width="450" height="31"/>
+                                                <connections>
+                                                    <action selector="onAMultiplierSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="e2E-h1-Zvi"/>
+                                                    <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Duj-3Q-aeO"/>
+                                                </connections>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sls-2P-1oi">
+                                                <rect key="frame" x="0.0" y="16" width="178.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.87171256190000002" green="0.87171256190000002" blue="0.87171256190000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Sls-2P-1oi" firstAttribute="leading" secondItem="gD0-h9-tnx" secondAttribute="leading" id="9a5-UD-jvx"/>
+                                            <constraint firstItem="Hbm-El-NwU" firstAttribute="top" secondItem="Sls-2P-1oi" secondAttribute="bottom" constant="5" id="JMp-JV-H7k"/>
+                                            <constraint firstAttribute="trailing" secondItem="Hbm-El-NwU" secondAttribute="trailing" id="W1k-xQ-VMc"/>
+                                            <constraint firstItem="Sls-2P-1oi" firstAttribute="top" secondItem="gD0-h9-tnx" secondAttribute="top" constant="16" id="fyp-9e-GZk"/>
+                                            <constraint firstAttribute="height" constant="100" id="kUS-WU-8kW"/>
+                                            <constraint firstItem="Hbm-El-NwU" firstAttribute="leading" secondItem="gD0-h9-tnx" secondAttribute="leading" id="miB-Lx-WgU"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85784556878306883" green="0.80498578323257053" blue="0.51884949044936357" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -173,6 +200,7 @@
                                     <constraint firstItem="e7c-bn-geO" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="leading" id="3eg-qj-2xC"/>
                                     <constraint firstItem="Pb2-d5-m5H" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="leading" id="ElP-UY-5rH"/>
                                     <constraint firstAttribute="trailing" secondItem="e7c-bn-geO" secondAttribute="trailing" id="FmV-3c-ieV"/>
+                                    <constraint firstItem="gD0-h9-tnx" firstAttribute="top" secondItem="e7c-bn-geO" secondAttribute="bottom" id="Hgx-iq-pig"/>
                                     <constraint firstAttribute="centerX" secondItem="jzw-aB-bV2" secondAttribute="centerX" id="HkV-wD-PPi"/>
                                     <constraint firstItem="jzw-aB-bV2" firstAttribute="top" secondItem="GUJ-gY-ekO" secondAttribute="bottom" constant="15" id="IKJ-o9-doK"/>
                                     <constraint firstAttribute="trailing" secondItem="GUJ-gY-ekO" secondAttribute="trailing" id="MKf-g2-8GM"/>
@@ -184,7 +212,9 @@
                                     <constraint firstAttribute="trailing" secondItem="dsd-tO-I8H" secondAttribute="trailing" id="fk9-5h-0IP"/>
                                     <constraint firstItem="dsd-tO-I8H" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="leading" id="g8O-gt-l6Z"/>
                                     <constraint firstAttribute="trailing" secondItem="Pb2-d5-m5H" secondAttribute="trailing" id="it8-KK-P3L"/>
+                                    <constraint firstAttribute="trailing" secondItem="gD0-h9-tnx" secondAttribute="trailing" id="l3T-Md-Fih"/>
                                     <constraint firstItem="Apb-9h-7xH" firstAttribute="top" secondItem="Pb2-d5-m5H" secondAttribute="bottom" constant="8" symbolic="YES" id="nkb-dZ-gsn"/>
+                                    <constraint firstItem="gD0-h9-tnx" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="leading" id="rxO-fj-fyZ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-Ev-ZEy" customClass="ObjectContainerView" customModule="SpringAnimationCALayer" customModuleProvider="target">
@@ -217,6 +247,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="aMultiplierContains" destination="gD0-h9-tnx" id="bXM-IP-2ia"/>
+                        <outlet property="aMultiplierLabel" destination="Sls-2P-1oi" id="n42-Qx-DzV"/>
+                        <outlet property="aMultiplierSlider" destination="Hbm-El-NwU" id="ewm-4s-2n0"/>
                         <outlet property="controlsContainer" destination="mFD-TD-7uv" id="SH1-DW-Ago"/>
                         <outlet property="dampingContainer" destination="Apb-9h-7xH" id="ZQn-QZ-EMz"/>
                         <outlet property="dampingLabel" destination="ycM-js-m2c" id="1ki-CK-GxC"/>
@@ -231,13 +264,14 @@
                         <outlet property="initialVelocityLabel" destination="ODA-Wy-y1r" id="Ygq-Rk-UQX"/>
                         <outlet property="initialVelocitySlider" destination="noi-AA-TSq" id="jTq-ch-Cxn"/>
                         <outlet property="objectsContainer" destination="9VT-Jw-wS8" id="5Pb-eo-znv"/>
-                        <outlet property="velocityMultiplierContains" destination="e7c-bn-geO" id="9HV-HE-qFx"/>
+                        <outlet property="velocityMultiplierContains" destination="e7c-bn-geO" id="94y-ot-Ey8"/>
                         <outlet property="velocityMultiplierLabel" destination="i3T-tC-1I0" id="rws-4S-x2y"/>
                         <outlet property="velocityMultiplierSlider" destination="kNg-VG-xJo" id="6c6-eq-gsG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="280" y="324"/>
         </scene>
     </scenes>
 </document>
