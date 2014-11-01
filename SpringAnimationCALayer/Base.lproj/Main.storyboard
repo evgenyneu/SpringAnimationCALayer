@@ -111,10 +111,38 @@
                                             <action selector="onGoTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="511-5z-loz"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsd-tO-I8H" userLabel="controls container">
+                                        <rect key="frame" x="0.0" y="385" width="460" height="100"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Qv-pa-CYs">
+                                                <rect key="frame" x="-2" y="41" width="464" height="31"/>
+                                                <connections>
+                                                    <action selector="onDampingMultiplierSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="CdV-YB-Wcr"/>
+                                                    <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2JL-Wq-QU3"/>
+                                                </connections>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Damping multiplier" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcX-rI-7Ev">
+                                                <rect key="frame" x="0.0" y="16" width="144" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.87171256190000002" green="0.87171256190000002" blue="0.87171256190000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="M3Q-At-3XM"/>
+                                            <constraint firstItem="pcX-rI-7Ev" firstAttribute="leading" secondItem="dsd-tO-I8H" secondAttribute="leading" id="VQD-9V-SdU"/>
+                                            <constraint firstItem="pcX-rI-7Ev" firstAttribute="top" secondItem="dsd-tO-I8H" secondAttribute="top" constant="16" id="eha-6Z-G6h"/>
+                                            <constraint firstAttribute="trailing" secondItem="4Qv-pa-CYs" secondAttribute="trailing" id="f4b-hp-jz7"/>
+                                            <constraint firstItem="4Qv-pa-CYs" firstAttribute="top" secondItem="pcX-rI-7Ev" secondAttribute="bottom" constant="5" id="fXt-1M-Daa"/>
+                                            <constraint firstItem="4Qv-pa-CYs" firstAttribute="leading" secondItem="dsd-tO-I8H" secondAttribute="leading" id="kg3-Va-k5M"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.85784556878306883" green="0.80498578323257053" blue="0.51884949044936357" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="GUJ-gY-ekO" firstAttribute="top" secondItem="Apb-9h-7xH" secondAttribute="bottom" constant="8" symbolic="YES" id="1oy-eT-N8D"/>
+                                    <constraint firstItem="dsd-tO-I8H" firstAttribute="top" secondItem="jzw-aB-bV2" secondAttribute="bottom" constant="-1" id="20k-PP-FZd"/>
                                     <constraint firstItem="Pb2-d5-m5H" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="leading" id="ElP-UY-5rH"/>
                                     <constraint firstAttribute="centerX" secondItem="jzw-aB-bV2" secondAttribute="centerX" id="HkV-wD-PPi"/>
                                     <constraint firstItem="jzw-aB-bV2" firstAttribute="top" secondItem="GUJ-gY-ekO" secondAttribute="bottom" constant="15" id="IKJ-o9-doK"/>
@@ -123,6 +151,8 @@
                                     <constraint firstItem="Apb-9h-7xH" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="leading" id="aB5-EL-Ldg"/>
                                     <constraint firstItem="Pb2-d5-m5H" firstAttribute="top" secondItem="mFD-TD-7uv" secondAttribute="top" id="cft-u9-7l8"/>
                                     <constraint firstAttribute="trailing" secondItem="Apb-9h-7xH" secondAttribute="trailing" id="ffE-q3-XNP"/>
+                                    <constraint firstAttribute="trailing" secondItem="dsd-tO-I8H" secondAttribute="trailing" id="fk9-5h-0IP"/>
+                                    <constraint firstItem="dsd-tO-I8H" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="leading" id="g8O-gt-l6Z"/>
                                     <constraint firstAttribute="trailing" secondItem="Pb2-d5-m5H" secondAttribute="trailing" id="it8-KK-P3L"/>
                                     <constraint firstItem="Apb-9h-7xH" firstAttribute="top" secondItem="Pb2-d5-m5H" secondAttribute="bottom" constant="8" symbolic="YES" id="nkb-dZ-gsn"/>
                                 </constraints>
@@ -150,6 +180,9 @@
                         <outlet property="controlsContainer" destination="mFD-TD-7uv" id="SH1-DW-Ago"/>
                         <outlet property="dampingContainer" destination="Apb-9h-7xH" id="ZQn-QZ-EMz"/>
                         <outlet property="dampingLabel" destination="ycM-js-m2c" id="1ki-CK-GxC"/>
+                        <outlet property="dampingMultiplierContains" destination="dsd-tO-I8H" id="eqH-AB-MUb"/>
+                        <outlet property="dampingMultiplierLabel" destination="pcX-rI-7Ev" id="7yJ-CL-AXM"/>
+                        <outlet property="dampingMultiplierSlider" destination="4Qv-pa-CYs" id="57R-JJ-yoW"/>
                         <outlet property="dampingSlider" destination="EAi-KC-UEf" id="1QH-ER-PAy"/>
                         <outlet property="durationContainer" destination="Pb2-d5-m5H" id="5Tg-9a-SaZ"/>
                         <outlet property="durationLabel" destination="WGg-Qc-huq" id="iv4-bw-tEc"/>
