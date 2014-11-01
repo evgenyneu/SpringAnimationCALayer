@@ -25,7 +25,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var dampingContainer: UIView!
   @IBOutlet weak var dampingLabel: UILabel!
   @IBOutlet weak var dampingSlider: UISlider!
-  let dampingSliderDefaults = SliderDefaults(value: 0.3, minimumValue: 0.01, maximumValue: 5.0)
+  let dampingSliderDefaults = SliderDefaults(value: 0.3, minimumValue: 0.01, maximumValue: 0.6)
 
   // Initial velocity
   @IBOutlet weak var initialVelocityContainer: UIView!
@@ -172,7 +172,8 @@ class ViewController: UIViewController {
   }
 
   private func springValueNormalized(x: Double, damping: Double, initialVelocity: Double) -> Double {
-    return pow(M_E, -damping * x) * cos(initialVelocity * x)
+
+    return pow(M_E, -pow(damping,1) * x) * cos(M_E * initialVelocity * x / damping)
   }
 
   @IBAction func onGoTapped(sender: AnyObject) {
