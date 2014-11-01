@@ -82,14 +82,14 @@ class ViewController: UIViewController {
   private func createObjectOne() {
     objectOne = UIView(frame: CGRect(origin: CGPoint(),
       size: CGSize(width: objectSize, height: objectSize)))
-    objectOne.backgroundColor = UIColor.blueColor()
+    objectOne.backgroundColor = UIColor.grayColor()
     objectsContainer.addSubview(objectOne)
   }
 
   private func createObjectTwo() {
     objectTwo = UIView(frame: CGRect(origin: CGPoint(x: objectSize + objectMargin, y: 0),
       size: CGSize(width: objectSize, height: objectSize)))
-    objectTwo.backgroundColor = UIColor.blueColor()
+    objectTwo.backgroundColor = UIColor.grayColor()
     objectsContainer.addSubview(objectTwo)
     objectTwo.layer.anchorPoint = CGPoint(x: 0, y: 0)
     resetObjectTwoPosition()
