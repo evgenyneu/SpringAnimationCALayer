@@ -1,0 +1,9 @@
+pow(M_E, -damping * x) * cos(initialVelocity * x)
+
+Duration: 3.0
+Damping: 0.3
+Initial velocity: 1.0
+
+Damping mutiplier: 9.5
+Velocity multiplier: 9.1
+

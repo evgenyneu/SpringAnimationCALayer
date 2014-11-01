@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B5B14221A04838D00F88185 /* ObjectContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B14211A04838D00F88185 /* ObjectContainerView.swift */; };
+		2B5B14241A048DE700F88185 /* animation_parameters.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2B5B14231A048DE700F88185 /* animation_parameters.txt */; };
 		2BE88D611A04412400FF13D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D601A04412400FF13D5 /* AppDelegate.swift */; };
 		2BE88D631A04412400FF13D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D621A04412400FF13D5 /* ViewController.swift */; };
 		2BE88D661A04412400FF13D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE88D641A04412400FF13D5 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		2B5B14211A04838D00F88185 /* ObjectContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectContainerView.swift; sourceTree = "<group>"; };
+		2B5B14231A048DE700F88185 /* animation_parameters.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = animation_parameters.txt; sourceTree = "<group>"; };
 		2BE88D5B1A04412400FF13D5 /* SpringAnimationCALayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpringAnimationCALayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE88D5F1A04412400FF13D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BE88D601A04412400FF13D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		2BE88D5D1A04412400FF13D5 /* SpringAnimationCALayer */ = {
 			isa = PBXGroup;
 			children = (
+				2B5B14231A048DE700F88185 /* animation_parameters.txt */,
 				2BE88D601A04412400FF13D5 /* AppDelegate.swift */,
 				2BE88D621A04412400FF13D5 /* ViewController.swift */,
 				2BE88D641A04412400FF13D5 /* Main.storyboard */,
@@ -199,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BE88D661A04412400FF13D5 /* Main.storyboard in Resources */,
+				2B5B14241A048DE700F88185 /* animation_parameters.txt in Resources */,
 				2BE88D6B1A04412400FF13D5 /* LaunchScreen.xib in Resources */,
 				2BE88D681A04412400FF13D5 /* Images.xcassets in Resources */,
 			);

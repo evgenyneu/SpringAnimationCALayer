@@ -37,13 +37,13 @@ class ViewController: UIViewController {
   @IBOutlet weak var dampingMultiplierContains: UIView!
   @IBOutlet weak var dampingMultiplierLabel: UILabel!
   @IBOutlet weak var dampingMultiplierSlider: UISlider!
-  let dampingMultiplierSliderDefaults = SliderDefaults(value: 9.45, minimumValue: 9.4, maximumValue: 9.5)
+  let dampingMultiplierSliderDefaults = SliderDefaults(value: 9.5, minimumValue: 9.4, maximumValue: 9.6)
 
   // Velocity multiplier
   @IBOutlet weak var velocityMultiplierContains: UIView!
   @IBOutlet weak var velocityMultiplierLabel: UILabel!
   @IBOutlet weak var velocityMultiplierSlider: UISlider!
-  let velocityMultiplierSliderDefaults = SliderDefaults(value: 9.13, minimumValue: 8.5, maximumValue: 9.5)
+  let velocityMultiplierSliderDefaults = SliderDefaults(value: 9.1, minimumValue: 9, maximumValue: 9.2)
 
 
   var objectOne: UIView!
@@ -141,7 +141,6 @@ class ViewController: UIViewController {
     let dampingMultiplier = Double(dampingMultiplierSlider.value)
     let velocityMultiplier = Double(velocityMultiplierSlider.value)
 
-
     let values = springValues(0, toValue: Double(objectsContainer.bounds.height / 2),
       damping: dampingMultiplier * Double(dampingSlider.value),
       initialVelocity: velocityMultiplier * Double(initialVelocitySlider.value))
@@ -156,7 +155,7 @@ class ViewController: UIViewController {
   private func springValues(fromValue: Double, toValue: Double,
     damping: Double, initialVelocity: Double) -> [Double]{
 
-    let numOfPoints = 300
+    let numOfPoints = 1000
     var values = [Double](count: numOfPoints, repeatedValue: 0.0)
 
     let distanceBetweenValues = toValue - fromValue
@@ -219,7 +218,7 @@ class ViewController: UIViewController {
   }
 
   private func formatValue(value: Float) -> String {
-    return String(format: "%.2f", value)
+    return String(format: "%.3f", value)
   }
 }
 
