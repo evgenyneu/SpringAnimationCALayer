@@ -114,10 +114,37 @@ class ViewController: UIViewController {
   private func animateObjectTwo() {
     setObjectTwoPosition(viewOneContainer.bounds.height / 2)
 
-    let animation = CABasicAnimation(keyPath: "position.y")
-    animation.fromValue = 0
-    animation.toValue = viewOneContainer.bounds.height / 2
+    let values = springValues(0, toValue: Double(viewOneContainer.bounds.height / 2),
+      damping: 12 * Double(dampingSlider.value),
+      initialVelocity: 3 * Double(initialVelocitySlider.value))
+
+    let animation = CAKeyframeAnimation(keyPath: "position.y")
+    animation.values = values
+    animation.duration = CFTimeInterval(durationSlider.value)
     objectTwo.layer.addAnimation(animation, forKey: "mySpringAnimation")
+  }
+
+  private func springValues(fromValue: Double, toValue: Double,
+    damping: Double, initialVelocity: Double) -> [Double]{
+
+    let numOfPoints = 100
+    var values = [Double](count: numOfPoints, repeatedValue: 0.0)
+
+    let distanceBetweenValues = toValue - fromValue
+
+    for point in (0..<numOfPoints) {
+      let x = Double(point) / Double(numOfPoints)
+      let valueNormalized = springValueNormalized(x, damping: damping, initialVelocity: initialVelocity)
+
+      let value = toValue - distanceBetweenValues * valueNormalized
+      values[point] = value
+    }
+
+    return values
+  }
+
+  private func springValueNormalized(x: Double, damping: Double, initialVelocity: Double) -> Double {
+    return pow(M_E, -damping * x) * cos(initialVelocity * x)
   }
 
   @IBAction func onGoTapped(sender: AnyObject) {
