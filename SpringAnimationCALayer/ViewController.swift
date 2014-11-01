@@ -13,6 +13,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var viewOneContainer: UIView!
 
   let objectSize: CGFloat = 50
+  let objectMargin: CGFloat = 10
 
   // Duration
   @IBOutlet weak var durationContainer: UIView!
@@ -34,21 +35,16 @@ class ViewController: UIViewController {
 
 
   var objectOne: UIView!
+  var objectTwo: UIView!
+
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    controlsContainer.backgroundColor = nil
-    viewOneContainer.backgroundColor = nil
-    durationContainer.backgroundColor = nil
-    dampingContainer.backgroundColor = nil
-    initialVelocityContainer.backgroundColor = nil
+    removeBackgroundColor()
 
-    objectOne = UIView(frame: CGRect(origin: CGPoint(),
-      size: CGSize(width: objectSize, height: objectSize)))
-
-    objectOne.backgroundColor = UIColor.blueColor()
-    viewOneContainer.addSubview(objectOne)
+    createObjectOne()
+    createObjectTwo()
 
     // Duration
     SliderDefaults.set(durationSlider, defaults: durationSliderDefaults)
@@ -63,7 +59,44 @@ class ViewController: UIViewController {
     onInitialVelocitySliderChanged(initialVelocitySlider)
   }
 
-  func animate() {
+  private func createObjectOne() {
+    objectOne = UIView(frame: CGRect(origin: CGPoint(),
+      size: CGSize(width: objectSize, height: objectSize)))
+    objectOne.backgroundColor = UIColor.blueColor()
+    viewOneContainer.addSubview(objectOne)
+  }
+
+  private func createObjectTwo() {
+    objectTwo = UIView(frame: CGRect(origin: CGPoint(x: objectSize + objectMargin, y: 0),
+      size: CGSize(width: objectSize, height: objectSize)))
+    objectTwo.backgroundColor = UIColor.blueColor()
+    viewOneContainer.addSubview(objectTwo)
+    objectTwo.layer.anchorPoint = CGPoint(x: 0, y: 0)
+    resetObjectTwoPosition()
+  }
+
+  private func resetObjectTwoPosition() {
+    setObjectTwoPosition(0)
+  }
+
+  private func setObjectTwoPosition(yPosition: CGFloat) {
+    objectTwo.layer.position = CGPoint(x: objectSize + objectMargin, y: yPosition)
+  }
+
+  private func removeBackgroundColor() {
+    controlsContainer.backgroundColor = nil
+    viewOneContainer.backgroundColor = nil
+    durationContainer.backgroundColor = nil
+    dampingContainer.backgroundColor = nil
+    initialVelocityContainer.backgroundColor = nil
+  }
+
+  private func animate() {
+    animateObjectOne()
+    animateObjectTwo()
+  }
+
+  private func animateObjectOne() {
     objectOne.frame.origin = CGPoint(x: 0, y: 0)
 
     UIView.animateWithDuration(NSTimeInterval(durationSlider.value),
@@ -76,6 +109,15 @@ class ViewController: UIViewController {
         self.objectOne.frame.origin = CGPoint(x: 0, y: newCenterY)
       },
       completion: nil)
+  }
+
+  private func animateObjectTwo() {
+    setObjectTwoPosition(viewOneContainer.bounds.height / 2)
+
+    let animation = CABasicAnimation(keyPath: "position.y")
+    animation.fromValue = 0
+    animation.toValue = viewOneContainer.bounds.height / 2
+    objectTwo.layer.addAnimation(animation, forKey: "mySpringAnimation")
   }
 
   @IBAction func onGoTapped(sender: AnyObject) {
@@ -104,12 +146,11 @@ class ViewController: UIViewController {
     }
   }
 
-
-  func updateSliderLabel(slider: UISlider, label: UILabel, caption: String) {
+  private func updateSliderLabel(slider: UISlider, label: UILabel, caption: String) {
     label.text = "\(caption): \(formatValue(slider.value))"
   }
 
-  func formatValue(value: Float) -> String {
+  private func formatValue(value: Float) -> String {
     return String(format: "%.2f", value)
   }
 }
