@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFD-TD-7uv" userLabel="controls view">
-                                <rect key="frame" x="16" y="28" width="460" height="572"/>
+                                <rect key="frame" x="16" y="28" width="446" height="572"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pb2-d5-m5H" userLabel="controls container">
-                                        <rect key="frame" x="0.0" y="0.0" width="460" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="446" height="100"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ifh-cT-LFa">
-                                                <rect key="frame" x="-2" y="41" width="464" height="31"/>
+                                                <rect key="frame" x="-2" y="41" width="450" height="31"/>
                                                 <connections>
                                                     <action selector="onDurationSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="EQS-fk-uYg"/>
                                                     <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uve-U1-LFP"/>
@@ -48,10 +48,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Apb-9h-7xH" userLabel="controls container">
-                                        <rect key="frame" x="0.0" y="108" width="460" height="100"/>
+                                        <rect key="frame" x="0.0" y="108" width="446" height="100"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="EAi-KC-UEf">
-                                                <rect key="frame" x="-2" y="41" width="464" height="31"/>
+                                                <rect key="frame" x="-2" y="41" width="450" height="31"/>
                                                 <connections>
                                                     <action selector="onDampingSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Hdm-s6-lst"/>
                                                     <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ufL-3F-LgN"/>
@@ -75,10 +75,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GUJ-gY-ekO" userLabel="controls container">
-                                        <rect key="frame" x="0.0" y="216" width="460" height="100"/>
+                                        <rect key="frame" x="0.0" y="216" width="446" height="100"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="noi-AA-TSq">
-                                                <rect key="frame" x="-2" y="41" width="464" height="31"/>
+                                                <rect key="frame" x="-2" y="41" width="450" height="31"/>
                                                 <connections>
                                                     <action selector="onInitialVelocitySliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="M2U-zC-Xlw"/>
                                                     <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HRA-rX-yzM"/>
@@ -102,7 +102,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzw-aB-bV2">
-                                        <rect key="frame" x="206" y="331" width="48" height="55"/>
+                                        <rect key="frame" x="199" y="331" width="48" height="55"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                         <state key="normal" title="Go">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -112,10 +112,10 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsd-tO-I8H" userLabel="controls container">
-                                        <rect key="frame" x="0.0" y="385" width="460" height="100"/>
+                                        <rect key="frame" x="0.0" y="385" width="446" height="100"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Qv-pa-CYs">
-                                                <rect key="frame" x="-2" y="41" width="464" height="31"/>
+                                                <rect key="frame" x="-2" y="41" width="450" height="31"/>
                                                 <connections>
                                                     <action selector="onDampingMultiplierSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="CdV-YB-Wcr"/>
                                                     <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2JL-Wq-QU3"/>
@@ -139,17 +139,17 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7c-bn-geO" userLabel="controls container">
-                                        <rect key="frame" x="0.0" y="493" width="460" height="100"/>
+                                        <rect key="frame" x="0.0" y="493" width="446" height="100"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kNg-VG-xJo">
-                                                <rect key="frame" x="-2" y="41" width="464" height="31"/>
+                                                <rect key="frame" x="-2" y="41" width="450" height="31"/>
                                                 <connections>
                                                     <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EVZ-jf-5ol"/>
                                                     <action selector="onVelocityMultiplierSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="9wg-0l-mc7"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial velocity multiplier" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3T-tC-1I0">
-                                                <rect key="frame" x="0.0" y="16" width="179" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="16" width="178.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -187,17 +187,27 @@
                                     <constraint firstItem="Apb-9h-7xH" firstAttribute="top" secondItem="Pb2-d5-m5H" secondAttribute="bottom" constant="8" symbolic="YES" id="nkb-dZ-gsn"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-Ev-ZEy">
-                                <rect key="frame" x="484" y="28" width="100" height="564"/>
-                                <color key="backgroundColor" red="0.46870860689999999" green="1" blue="0.46648216190000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-Ev-ZEy" customClass="ObjectContainerView" customModule="SpringAnimationCALayer" customModuleProvider="target">
+                                <rect key="frame" x="470" y="28" width="120" height="564"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9VT-Jw-wS8">
+                                        <rect key="frame" x="5" y="0.0" width="110" height="564"/>
+                                        <color key="backgroundColor" red="1" green="0.98187100810000005" blue="0.74804543599999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="nDq-5P-wq9"/>
+                                    <constraint firstAttribute="trailing" secondItem="9VT-Jw-wS8" secondAttribute="trailing" constant="5" id="Nso-lr-40v"/>
+                                    <constraint firstAttribute="bottom" secondItem="9VT-Jw-wS8" secondAttribute="bottom" id="ZHe-oY-pE0"/>
+                                    <constraint firstAttribute="width" constant="120" id="nDq-5P-wq9"/>
+                                    <constraint firstItem="9VT-Jw-wS8" firstAttribute="leading" secondItem="bf1-Ev-ZEy" secondAttribute="leading" constant="5" id="qV8-Hi-sbX"/>
+                                    <constraint firstItem="9VT-Jw-wS8" firstAttribute="top" secondItem="bf1-Ev-ZEy" secondAttribute="top" id="tSU-tf-Y6h"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bf1-Ev-ZEy" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="66L-M9-9Pn"/>
+                            <constraint firstAttribute="trailing" secondItem="bf1-Ev-ZEy" secondAttribute="trailing" constant="10" id="66L-M9-9Pn"/>
                             <constraint firstItem="mFD-TD-7uv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ITA-F8-iFc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bf1-Ev-ZEy" secondAttribute="bottom" constant="8" symbolic="YES" id="R26-rf-gL8"/>
                             <constraint firstItem="bf1-Ev-ZEy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dQM-05-1jr"/>
@@ -220,10 +230,10 @@
                         <outlet property="initialVelocityContainer" destination="GUJ-gY-ekO" id="KQp-P2-qh6"/>
                         <outlet property="initialVelocityLabel" destination="ODA-Wy-y1r" id="Ygq-Rk-UQX"/>
                         <outlet property="initialVelocitySlider" destination="noi-AA-TSq" id="jTq-ch-Cxn"/>
+                        <outlet property="objectsContainer" destination="9VT-Jw-wS8" id="5Pb-eo-znv"/>
                         <outlet property="velocityMultiplierContains" destination="e7c-bn-geO" id="9HV-HE-qFx"/>
                         <outlet property="velocityMultiplierLabel" destination="i3T-tC-1I0" id="rws-4S-x2y"/>
                         <outlet property="velocityMultiplierSlider" destination="kNg-VG-xJo" id="6c6-eq-gsG"/>
-                        <outlet property="viewOneContainer" destination="bf1-Ev-ZEy" id="hKs-dE-MSH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

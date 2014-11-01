@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
   @IBOutlet weak var controlsContainer: UIView!
-  @IBOutlet weak var viewOneContainer: UIView!
+  @IBOutlet weak var objectsContainer: UIView!
 
   let objectSize: CGFloat = 50
   let objectMargin: CGFloat = 10
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var durationContainer: UIView!
   @IBOutlet weak var durationLabel: UILabel!
   @IBOutlet weak var durationSlider: UISlider!
-  let durationSliderDefaults = SliderDefaults(value: 2, minimumValue: 0.01, maximumValue: 5.0)
+  let durationSliderDefaults = SliderDefaults(value: 3, minimumValue: 0.01, maximumValue: 5.0)
 
   // Damping
   @IBOutlet weak var dampingContainer: UIView!
@@ -31,19 +31,19 @@ class ViewController: UIViewController {
   @IBOutlet weak var initialVelocityContainer: UIView!
   @IBOutlet weak var initialVelocityLabel: UILabel!
   @IBOutlet weak var initialVelocitySlider: UISlider!
-  let initialVelocutySliderDefaults = SliderDefaults(value: 5.0, minimumValue: 0.01, maximumValue: 10.0)
+  let initialVelocutySliderDefaults = SliderDefaults(value: 1, minimumValue: 0.01, maximumValue: 10.0)
 
   // Damping multiplier
   @IBOutlet weak var dampingMultiplierContains: UIView!
   @IBOutlet weak var dampingMultiplierLabel: UILabel!
   @IBOutlet weak var dampingMultiplierSlider: UISlider!
-  let dampingMultiplierSliderDefaults = SliderDefaults(value: 18, minimumValue: 15, maximumValue: 25)
+  let dampingMultiplierSliderDefaults = SliderDefaults(value: 9.45, minimumValue: 9.4, maximumValue: 9.5)
 
   // Velocity multiplier
   @IBOutlet weak var velocityMultiplierContains: UIView!
   @IBOutlet weak var velocityMultiplierLabel: UILabel!
   @IBOutlet weak var velocityMultiplierSlider: UISlider!
-  let velocityMultiplierSliderDefaults = SliderDefaults(value: 3.5, minimumValue: 2, maximumValue: 7)
+  let velocityMultiplierSliderDefaults = SliderDefaults(value: 9.13, minimumValue: 8.5, maximumValue: 9.5)
 
 
   var objectOne: UIView!
@@ -83,14 +83,14 @@ class ViewController: UIViewController {
     objectOne = UIView(frame: CGRect(origin: CGPoint(),
       size: CGSize(width: objectSize, height: objectSize)))
     objectOne.backgroundColor = UIColor.blueColor()
-    viewOneContainer.addSubview(objectOne)
+    objectsContainer.addSubview(objectOne)
   }
 
   private func createObjectTwo() {
     objectTwo = UIView(frame: CGRect(origin: CGPoint(x: objectSize + objectMargin, y: 0),
       size: CGSize(width: objectSize, height: objectSize)))
     objectTwo.backgroundColor = UIColor.blueColor()
-    viewOneContainer.addSubview(objectTwo)
+    objectsContainer.addSubview(objectTwo)
     objectTwo.layer.anchorPoint = CGPoint(x: 0, y: 0)
     resetObjectTwoPosition()
   }
@@ -104,8 +104,9 @@ class ViewController: UIViewController {
   }
 
   private func removeBackgroundColor() {
+    objectsContainer.backgroundColor = nil
+
     controlsContainer.backgroundColor = nil
-    viewOneContainer.backgroundColor = nil
     durationContainer.backgroundColor = nil
     dampingContainer.backgroundColor = nil
     initialVelocityContainer.backgroundColor = nil
@@ -120,40 +121,42 @@ class ViewController: UIViewController {
 
   private func animateObjectOne() {
     objectOne.frame.origin = CGPoint(x: 0, y: 0)
+    objectOne.layer.removeAllAnimations()
 
     UIView.animateWithDuration(NSTimeInterval(durationSlider.value),
       delay: 0,
       usingSpringWithDamping: CGFloat(dampingSlider.value),
       initialSpringVelocity: CGFloat(initialVelocitySlider.value),
-      options: nil,
+      options: UIViewAnimationOptions.BeginFromCurrentState,
       animations: {
-        let newCenterY = self.viewOneContainer.bounds.height / 2
+        let newCenterY = self.objectsContainer.bounds.height / 2
         self.objectOne.frame.origin = CGPoint(x: 0, y: newCenterY)
       },
       completion: nil)
   }
 
   private func animateObjectTwo() {
-    setObjectTwoPosition(viewOneContainer.bounds.height / 2)
+    setObjectTwoPosition(objectsContainer.bounds.height / 2)
 
     let dampingMultiplier = Double(dampingMultiplierSlider.value)
     let velocityMultiplier = Double(velocityMultiplierSlider.value)
 
 
-    let values = springValues(0, toValue: Double(viewOneContainer.bounds.height / 2),
+    let values = springValues(0, toValue: Double(objectsContainer.bounds.height / 2),
       damping: dampingMultiplier * Double(dampingSlider.value),
       initialVelocity: velocityMultiplier * Double(initialVelocitySlider.value))
 
     let animation = CAKeyframeAnimation(keyPath: "position.y")
     animation.values = values
     animation.duration = CFTimeInterval(durationSlider.value)
+    objectTwo.layer.removeAllAnimations()
     objectTwo.layer.addAnimation(animation, forKey: "mySpringAnimation")
   }
 
   private func springValues(fromValue: Double, toValue: Double,
     damping: Double, initialVelocity: Double) -> [Double]{
 
-    let numOfPoints = 100
+    let numOfPoints = 300
     var values = [Double](count: numOfPoints, repeatedValue: 0.0)
 
     let distanceBetweenValues = toValue - fromValue
