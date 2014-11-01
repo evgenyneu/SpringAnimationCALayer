@@ -144,8 +144,8 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kNg-VG-xJo">
                                                 <rect key="frame" x="-2" y="41" width="464" height="31"/>
                                                 <connections>
-                                                    <action selector="onDampingMultiplierSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Wxt-a2-1TU"/>
-                                                    <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ik4-Tj-Qgw"/>
+                                                    <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EVZ-jf-5ol"/>
+                                                    <action selector="onVelocityMultiplierSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="9wg-0l-mc7"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial velocity multiplier" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3T-tC-1I0">
@@ -220,6 +220,9 @@
                         <outlet property="initialVelocityContainer" destination="GUJ-gY-ekO" id="KQp-P2-qh6"/>
                         <outlet property="initialVelocityLabel" destination="ODA-Wy-y1r" id="Ygq-Rk-UQX"/>
                         <outlet property="initialVelocitySlider" destination="noi-AA-TSq" id="jTq-ch-Cxn"/>
+                        <outlet property="velocityMultiplierContains" destination="e7c-bn-geO" id="9HV-HE-qFx"/>
+                        <outlet property="velocityMultiplierLabel" destination="i3T-tC-1I0" id="rws-4S-x2y"/>
+                        <outlet property="velocityMultiplierSlider" destination="kNg-VG-xJo" id="6c6-eq-gsG"/>
                         <outlet property="viewOneContainer" destination="bf1-Ev-ZEy" id="hKs-dE-MSH"/>
                     </connections>
                 </viewController>

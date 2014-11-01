@@ -37,7 +37,13 @@ class ViewController: UIViewController {
   @IBOutlet weak var dampingMultiplierContains: UIView!
   @IBOutlet weak var dampingMultiplierLabel: UILabel!
   @IBOutlet weak var dampingMultiplierSlider: UISlider!
-  let dampingMultiplierSliderDefaults = SliderDefaults(value: 12, minimumValue: 5, maximumValue: 20)
+  let dampingMultiplierSliderDefaults = SliderDefaults(value: 18, minimumValue: 15, maximumValue: 25)
+
+  // Velocity multiplier
+  @IBOutlet weak var velocityMultiplierContains: UIView!
+  @IBOutlet weak var velocityMultiplierLabel: UILabel!
+  @IBOutlet weak var velocityMultiplierSlider: UISlider!
+  let velocityMultiplierSliderDefaults = SliderDefaults(value: 3.5, minimumValue: 2, maximumValue: 7)
 
 
   var objectOne: UIView!
@@ -67,6 +73,10 @@ class ViewController: UIViewController {
     // Damping multiplier
     SliderDefaults.set(dampingMultiplierSlider, defaults: dampingMultiplierSliderDefaults)
     onDampingMultiplierSliderChanged(dampingMultiplierSlider)
+
+    // Velocity multiplier
+    SliderDefaults.set(velocityMultiplierSlider, defaults: velocityMultiplierSliderDefaults)
+    onVelocityMultiplierSliderChanged(velocityMultiplierSlider)
   }
 
   private func createObjectOne() {
@@ -100,6 +110,7 @@ class ViewController: UIViewController {
     dampingContainer.backgroundColor = nil
     initialVelocityContainer.backgroundColor = nil
     dampingMultiplierContains.backgroundColor = nil
+    velocityMultiplierContains.backgroundColor = nil
   }
 
   private func animate() {
@@ -126,10 +137,12 @@ class ViewController: UIViewController {
     setObjectTwoPosition(viewOneContainer.bounds.height / 2)
 
     let dampingMultiplier = Double(dampingMultiplierSlider.value)
+    let velocityMultiplier = Double(velocityMultiplierSlider.value)
+
 
     let values = springValues(0, toValue: Double(viewOneContainer.bounds.height / 2),
       damping: dampingMultiplier * Double(dampingSlider.value),
-      initialVelocity: 3 * Double(initialVelocitySlider.value))
+      initialVelocity: velocityMultiplier * Double(initialVelocitySlider.value))
 
     let animation = CAKeyframeAnimation(keyPath: "position.y")
     animation.values = values
@@ -189,6 +202,12 @@ class ViewController: UIViewController {
   @IBAction func onDampingMultiplierSliderChanged(sender: AnyObject) {
     if let slider = sender as? UISlider {
       updateSliderLabel(slider, label: dampingMultiplierLabel, caption: "Damping multiplier")
+    }
+  }
+
+  @IBAction func onVelocityMultiplierSliderChanged(sender: AnyObject) {
+    if let slider = sender as? UISlider {
+      updateSliderLabel(slider, label: velocityMultiplierLabel, caption: "Velocity multiplier")
     }
   }
 
