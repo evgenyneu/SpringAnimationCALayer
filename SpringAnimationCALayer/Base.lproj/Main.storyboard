@@ -26,8 +26,8 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ifh-cT-LFa">
                                                 <rect key="frame" x="-2" y="41" width="464" height="31"/>
                                                 <connections>
-                                                    <action selector="durationSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N6I-Fi-c7W"/>
                                                     <action selector="onDurationSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="EQS-fk-uYg"/>
+                                                    <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uve-U1-LFP"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGg-Qc-huq">
@@ -53,8 +53,8 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="EAi-KC-UEf">
                                                 <rect key="frame" x="-2" y="41" width="464" height="31"/>
                                                 <connections>
-                                                    <action selector="durationSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0ly-Tx-O7D"/>
                                                     <action selector="onDampingSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Hdm-s6-lst"/>
+                                                    <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ufL-3F-LgN"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Damping" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycM-js-m2c">
@@ -80,8 +80,8 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="noi-AA-TSq">
                                                 <rect key="frame" x="-2" y="41" width="464" height="31"/>
                                                 <connections>
-                                                    <action selector="durationSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FZy-BD-pLL"/>
                                                     <action selector="onInitialVelocitySliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="M2U-zC-Xlw"/>
+                                                    <action selector="onSliderChangeEnd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HRA-rX-yzM"/>
                                                 </connections>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial velocity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODA-Wy-y1r">

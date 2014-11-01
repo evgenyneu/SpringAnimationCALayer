@@ -82,7 +82,7 @@ class ViewController: UIViewController {
     animate()
   }
 
-  @IBAction func durationSliderChangeEnd(sender: AnyObject) {
+  @IBAction func onSliderChangeEnd(sender: AnyObject) {
     animate()
   }
 
