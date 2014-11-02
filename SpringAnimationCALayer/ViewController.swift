@@ -16,7 +16,9 @@ class ViewController: UIViewController {
   let objectMargin: CGFloat = 10
 
   private let controlsData = [
-    "Duration": SliderDefaults(value: 3, minimumValue: 0.01, maximumValue: 5.0)
+    "Duration": SliderDefaults(value: 3, minimumValue: 0.01, maximumValue: 5.0),
+    "Damping": SliderDefaults(value: 0.1, minimumValue: 0.01, maximumValue: 0.6),
+    "InitialVelocity": SliderDefaults(value: 1, minimumValue: 0.01, maximumValue: 10.0)
   ]
 
 //  // Duration
@@ -96,9 +98,39 @@ class ViewController: UIViewController {
   }
 
   private func createControls() {
+    var previousControl:SliderControllerView? = nil
+
     for (name, defaults) in controlsData {
-      controlsContainer.addSubview(SliderControllerView(name: name, defaults: defaults))
+      let control = SliderControllerView(name: name, defaults: defaults)
+      controlsContainer.addSubview(control)
+      ViewController.layoutControl(control, previous: previousControl)
+      previousControl = control
     }
+  }
+
+  private class func layoutControl(control: UIView, previous: UIView?) {
+    control.setTranslatesAutoresizingMaskIntoConstraints(false)
+    control.backgroundColor = UIColor.yellowColor()
+
+    if let currentPrevious = previous {
+      control.superview?.addConstraints(
+        NSLayoutConstraint.constraintsWithVisualFormat(
+        "V:[previous][control]", options: nil, metrics: nil,
+        views: ["previous": currentPrevious, "control": control]))
+    } else {
+      control.superview?.addConstraint(
+        NSLayoutConstraint(item: control, attribute: NSLayoutAttribute.Top,
+          relatedBy: NSLayoutRelation.Equal, toItem: control.superview,
+          attribute: NSLayoutAttribute.Top, multiplier: 0, constant: 0))
+    }
+
+    control.superview?.addConstraints(
+      NSLayoutConstraint.constraintsWithVisualFormat(
+        "|[control]|", options: nil, metrics: nil,
+        views: ["control": control]))
+
+    control.addConstraint(NSLayoutConstraint(item: control, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 100))
+
   }
 
   private func createObjectOne() {
