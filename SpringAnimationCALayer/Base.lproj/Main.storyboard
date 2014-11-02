@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aqe-Sd-PfO">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Spring animation-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SpringAnimationCALayer" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,30 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFD-TD-7uv" userLabel="controls view">
-                                <rect key="frame" x="16" y="28" width="446" height="572"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzw-aB-bV2">
-                                        <rect key="frame" x="199" y="331" width="48" height="55"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <state key="normal" title="Go">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onGoTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="511-5z-loz"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.85784556878306883" green="0.80498578323257053" blue="0.51884949044936357" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="jzw-aB-bV2" secondAttribute="centerX" id="HkV-wD-PPi"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-Ev-ZEy" customClass="ObjectContainerView" customModule="SpringAnimationCALayer" customModuleProvider="target">
-                                <rect key="frame" x="470" y="28" width="120" height="564"/>
+                                <rect key="frame" x="470" y="64" width="120" height="528"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9VT-Jw-wS8">
-                                        <rect key="frame" x="5" y="0.0" width="110" height="564"/>
+                                        <rect key="frame" x="5" y="0.0" width="110" height="528"/>
                                         <color key="backgroundColor" red="1" green="0.98187100810000005" blue="0.74804543599999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
@@ -53,24 +35,53 @@
                                     <constraint firstItem="9VT-Jw-wS8" firstAttribute="top" secondItem="bf1-Ev-ZEy" secondAttribute="top" id="tSU-tf-Y6h"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFD-TD-7uv" userLabel="controls view">
+                                <rect key="frame" x="16" y="72" width="446" height="528"/>
+                                <color key="backgroundColor" red="0.46870860689999999" green="1" blue="0.46648216190000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bf1-Ev-ZEy" secondAttribute="trailing" constant="10" id="66L-M9-9Pn"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mFD-TD-7uv" secondAttribute="bottom" id="BoA-cy-qdW"/>
+                            <constraint firstItem="mFD-TD-7uv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="GpO-kf-QWb"/>
                             <constraint firstItem="mFD-TD-7uv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ITA-F8-iFc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bf1-Ev-ZEy" secondAttribute="bottom" constant="8" symbolic="YES" id="R26-rf-gL8"/>
-                            <constraint firstItem="bf1-Ev-ZEy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dQM-05-1jr"/>
-                            <constraint firstItem="mFD-TD-7uv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dxx-os-ghq"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mFD-TD-7uv" secondAttribute="bottom" id="jMg-3b-vDn"/>
+                            <constraint firstItem="bf1-Ev-ZEy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="p0Z-Xf-Txq"/>
                             <constraint firstItem="bf1-Ev-ZEy" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="trailing" constant="8" symbolic="YES" id="rzo-Oz-av8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Spring animation" id="XB8-Ky-zeI">
+                        <barButtonItem key="rightBarButtonItem" title="Animate" id="jsE-Wf-7HS">
+                            <connections>
+                                <action selector="onGoTapped:" destination="BYZ-38-t0r" id="frQ-gr-nLk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="controlsContainer" destination="mFD-TD-7uv" id="SH1-DW-Ago"/>
                         <outlet property="objectsContainer" destination="9VT-Jw-wS8" id="5Pb-eo-znv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="417"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="af5-ct-wlB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aqe-Sd-PfO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r6h-H5-snw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="CfX-0L-H4a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9aU-TI-wUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="280" y="324"/>
         </scene>

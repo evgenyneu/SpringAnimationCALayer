@@ -9,14 +9,15 @@
 import UIKit
 
 class SliderControllerView: UIView {
-  let name: String!
-  let label: UILabel!
-  let delegate: SliderControllerDelegate!
+  private let type: ControlType!
+  private let label: UILabel!
+  private let slider: UISlider!
+  private let delegate: SliderControllerDelegate!
 
-  init(name: String, defaults: SliderDefaults, delegate: SliderControllerDelegate) {
+  init(type: ControlType, defaults: SliderDefaults, delegate: SliderControllerDelegate) {
     super.init()
 
-    self.name = name
+    self.type = type
     self.delegate = delegate
 
     setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -24,16 +25,19 @@ class SliderControllerView: UIView {
     label = UILabel()
     configureLabel()
 
-    let slider = UISlider()
+    slider = UISlider()
     configureSlider(slider)
 
     SliderDefaults.set(slider, defaults: defaults)
-    SliderControllerView.updateSliderLabel(slider, label: label, caption: name)
+    SliderControllerView.updateSliderLabel(slider, label: label, caption: type.rawValue)
+  }
+
+  var value: Float {
+    return slider.value
   }
 
   private func configureLabel() {
     label.setTranslatesAutoresizingMaskIntoConstraints(false)
-    label.text = name
     addSubview(label)
 
     SliderControllerView.positionLabel(label, superview: self)
@@ -57,10 +61,10 @@ class SliderControllerView: UIView {
   }
 
   func sliderChanged(slider: UISlider) {
-    SliderControllerView.updateSliderLabel(slider, label: label, caption: name)
+    SliderControllerView.updateSliderLabel(slider, label: label, caption: type.rawValue)
   }
 
-  func onSliderChangeEnd(slider: UISlider) {
+  func sliderChangeEnded(slider: UISlider) {
     delegate.sliderControllerDelegate_OnChangeEnded()
   }
 

@@ -13,6 +13,8 @@
 		2B5B14291A05BA1600F88185 /* iiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B14281A05BA1600F88185 /* iiLayout.swift */; };
 		2B5B142B1A05BC8700F88185 /* ControlsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B142A1A05BC8700F88185 /* ControlsData.swift */; };
 		2B5B142E1A05C57B00F88185 /* SliderControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B142D1A05C57B00F88185 /* SliderControllerDelegate.swift */; };
+		2B5B14301A05C8A000F88185 /* ControlType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B142F1A05C8A000F88185 /* ControlType.swift */; };
+		2B5B14321A05CD3E00F88185 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B5B14311A05CD3E00F88185 /* Default-568h@2x.png */; };
 		2BE88D611A04412400FF13D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D601A04412400FF13D5 /* AppDelegate.swift */; };
 		2BE88D631A04412400FF13D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D621A04412400FF13D5 /* ViewController.swift */; };
 		2BE88D661A04412400FF13D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE88D641A04412400FF13D5 /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 		2B5B14281A05BA1600F88185 /* iiLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iiLayout.swift; path = SpringAnimationCALayer/iiLayout.swift; sourceTree = "<group>"; };
 		2B5B142A1A05BC8700F88185 /* ControlsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsData.swift; sourceTree = "<group>"; };
 		2B5B142D1A05C57B00F88185 /* SliderControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderControllerDelegate.swift; sourceTree = "<group>"; };
+		2B5B142F1A05C8A000F88185 /* ControlType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlType.swift; sourceTree = "<group>"; };
+		2B5B14311A05CD3E00F88185 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2BE88D5B1A04412400FF13D5 /* SpringAnimationCALayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpringAnimationCALayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE88D5F1A04412400FF13D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BE88D601A04412400FF13D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,12 +115,13 @@
 				2B5B142C1A05C56A00F88185 /* Delegates */,
 				2B5B14231A048DE700F88185 /* animation_parameters.txt */,
 				2BE88D601A04412400FF13D5 /* AppDelegate.swift */,
+				2B5B142A1A05BC8700F88185 /* ControlsData.swift */,
+				2B5B142F1A05C8A000F88185 /* ControlType.swift */,
 				2BE88D621A04412400FF13D5 /* ViewController.swift */,
 				2BE88D641A04412400FF13D5 /* Main.storyboard */,
 				2B5B14211A04838D00F88185 /* ObjectContainerView.swift */,
 				2B5B14251A05B10000F88185 /* SliderControllerView.swift */,
 				2BE88D801A04472A00FF13D5 /* SliderDefaults.swift */,
-				2B5B142A1A05BC8700F88185 /* ControlsData.swift */,
 				2BE88D671A04412400FF13D5 /* Images.xcassets */,
 				2BE88D691A04412400FF13D5 /* LaunchScreen.xib */,
 				2BE88D5E1A04412400FF13D5 /* Supporting Files */,
@@ -127,6 +132,7 @@
 		2BE88D5E1A04412400FF13D5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2B5B14311A05CD3E00F88185 /* Default-568h@2x.png */,
 				2BE88D5F1A04412400FF13D5 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -232,6 +238,7 @@
 				2BE88D661A04412400FF13D5 /* Main.storyboard in Resources */,
 				2B5B14241A048DE700F88185 /* animation_parameters.txt in Resources */,
 				2BE88D6B1A04412400FF13D5 /* LaunchScreen.xib in Resources */,
+				2B5B14321A05CD3E00F88185 /* Default-568h@2x.png in Resources */,
 				2BE88D681A04412400FF13D5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B5B142B1A05BC8700F88185 /* ControlsData.swift in Sources */,
+				2B5B14301A05C8A000F88185 /* ControlType.swift in Sources */,
 				2BE88D811A04472A00FF13D5 /* SliderDefaults.swift in Sources */,
 				2B5B14221A04838D00F88185 /* ObjectContainerView.swift in Sources */,
 				2B5B142E1A05C57B00F88185 /* SliderControllerDelegate.swift in Sources */,
@@ -333,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -370,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
