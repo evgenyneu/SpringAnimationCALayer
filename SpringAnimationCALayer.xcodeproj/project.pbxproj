@@ -12,6 +12,7 @@
 		2B5B14261A05B10000F88185 /* SliderControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B14251A05B10000F88185 /* SliderControllerView.swift */; };
 		2B5B14291A05BA1600F88185 /* iiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B14281A05BA1600F88185 /* iiLayout.swift */; };
 		2B5B142B1A05BC8700F88185 /* ControlsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B142A1A05BC8700F88185 /* ControlsData.swift */; };
+		2B5B142E1A05C57B00F88185 /* SliderControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B142D1A05C57B00F88185 /* SliderControllerDelegate.swift */; };
 		2BE88D611A04412400FF13D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D601A04412400FF13D5 /* AppDelegate.swift */; };
 		2BE88D631A04412400FF13D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D621A04412400FF13D5 /* ViewController.swift */; };
 		2BE88D661A04412400FF13D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE88D641A04412400FF13D5 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		2B5B14251A05B10000F88185 /* SliderControllerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderControllerView.swift; sourceTree = "<group>"; };
 		2B5B14281A05BA1600F88185 /* iiLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iiLayout.swift; path = SpringAnimationCALayer/iiLayout.swift; sourceTree = "<group>"; };
 		2B5B142A1A05BC8700F88185 /* ControlsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsData.swift; sourceTree = "<group>"; };
+		2B5B142D1A05C57B00F88185 /* SliderControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderControllerDelegate.swift; sourceTree = "<group>"; };
 		2BE88D5B1A04412400FF13D5 /* SpringAnimationCALayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpringAnimationCALayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE88D5F1A04412400FF13D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BE88D601A04412400FF13D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 			name = Utls;
 			sourceTree = "<group>";
 		};
+		2B5B142C1A05C56A00F88185 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				2B5B142D1A05C57B00F88185 /* SliderControllerDelegate.swift */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
 		2BE88D521A04412400FF13D5 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 		2BE88D5D1A04412400FF13D5 /* SpringAnimationCALayer */ = {
 			isa = PBXGroup;
 			children = (
+				2B5B142C1A05C56A00F88185 /* Delegates */,
 				2B5B14231A048DE700F88185 /* animation_parameters.txt */,
 				2BE88D601A04412400FF13D5 /* AppDelegate.swift */,
 				2BE88D621A04412400FF13D5 /* ViewController.swift */,
@@ -242,6 +253,7 @@
 				2B5B142B1A05BC8700F88185 /* ControlsData.swift in Sources */,
 				2BE88D811A04472A00FF13D5 /* SliderDefaults.swift in Sources */,
 				2B5B14221A04838D00F88185 /* ObjectContainerView.swift in Sources */,
+				2B5B142E1A05C57B00F88185 /* SliderControllerDelegate.swift in Sources */,
 				2B5B14261A05B10000F88185 /* SliderControllerView.swift in Sources */,
 				2B5B14291A05BA1600F88185 /* iiLayout.swift in Sources */,
 				2BE88D631A04412400FF13D5 /* ViewController.swift in Sources */,

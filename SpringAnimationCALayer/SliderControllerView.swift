@@ -10,32 +10,62 @@ import UIKit
 
 class SliderControllerView: UIView {
   let name: String!
-  let caption: UILabel!
+  let label: UILabel!
+  let delegate: SliderControllerDelegate!
 
-  init(name: String, defaults: SliderDefaults) {
+  init(name: String, defaults: SliderDefaults, delegate: SliderControllerDelegate) {
     super.init()
-    self.name = name
 
-    caption = UILabel()
+    self.name = name
+    self.delegate = delegate
+
+    setTranslatesAutoresizingMaskIntoConstraints(false)
+
+    label = UILabel()
     configureLabel()
 
     let slider = UISlider()
-//    configureSlider(slider)
+    configureSlider(slider)
+
+    SliderDefaults.set(slider, defaults: defaults)
+    SliderControllerView.updateSliderLabel(slider, label: label, caption: name)
   }
 
   private func configureLabel() {
-    caption.setTranslatesAutoresizingMaskIntoConstraints(false)
-    caption.text = name
-    addSubview(caption)
+    label.setTranslatesAutoresizingMaskIntoConstraints(false)
+    label.text = name
+    addSubview(label)
 
-    SliderControllerView.positionCaption(caption, superview: self)
+    SliderControllerView.positionLabel(label, superview: self)
+  }
+
+  private class func positionLabel(label: UIView, superview: UIView) {
+    iiLayout.alignTop(label, anotherView: superview)
+    iiLayout.fullWidthInParent(label)
   }
 
   private func configureSlider(slider: UISlider) {
-    caption.setTranslatesAutoresizingMaskIntoConstraints(false)
+    slider.setTranslatesAutoresizingMaskIntoConstraints(false)
     addSubview(slider)
 
-    SliderControllerView.positionSlider(caption, slider: slider, superview: self)
+    slider.addTarget(self, action: "sliderChanged:", forControlEvents: UIControlEvents.ValueChanged)
+
+    slider.addTarget(self, action: "sliderChangeEnded:", forControlEvents: UIControlEvents.TouchUpInside)
+
+
+    SliderControllerView.positionSlider(label, slider: slider, superview: self)
+  }
+
+  func sliderChanged(slider: UISlider) {
+    SliderControllerView.updateSliderLabel(slider, label: label, caption: name)
+  }
+
+  func onSliderChangeEnd(slider: UISlider) {
+    delegate.sliderControllerDelegate_OnChangeEnded()
+  }
+
+  private class func updateSliderLabel(slider: UISlider, label: UILabel, caption: String) {
+    label.text = "\(caption): \(formatValue(slider.value))"
   }
 
   override init(frame: CGRect) {
@@ -46,13 +76,13 @@ class SliderControllerView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  private class func positionCaption(label: UIView, superview: UIView) {
-    iiLayout.alignTop(label, anotherView: superview)
-    iiLayout.fullWidthInParent(label)
-  }
-
   private class func positionSlider(caption: UIView, slider: UIView, superview: UIView) {
     iiLayout.fullWidthInParent(slider)
-    iiLayout.stackVertically(caption, viewNext: slider)
+    iiLayout.stackVertically(caption, viewNext: slider, margin: 3)
+    iiLayout.alignBottom(slider, anotherView: superview)
+  }
+
+  private class func formatValue(value: Float) -> String {
+    return String(format: "%.3f", value)
   }
 }

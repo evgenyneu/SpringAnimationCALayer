@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SliderControllerDelegate {
   @IBOutlet weak var controlsContainer: UIView!
   @IBOutlet weak var objectsContainer: UIView!
 
@@ -110,7 +110,7 @@ class ViewController: UIViewController {
     var previousControl:SliderControllerView? = nil
 
     for data in controlsData {
-      let control = SliderControllerView(name: data.name, defaults: data.defaults)
+      let control = SliderControllerView(name: data.name, defaults: data.defaults, delegate: self)
       controlsContainer.addSubview(control)
       ViewController.layoutControl(control, previous: previousControl)
       previousControl = control
@@ -119,10 +119,9 @@ class ViewController: UIViewController {
 
   private class func layoutControl(control: UIView, previous: UIView?) {
     control.setTranslatesAutoresizingMaskIntoConstraints(false)
-    control.backgroundColor = UIColor.yellowColor()
 
     if let currentPrevious = previous {
-      iiLayout.stackVertically(currentPrevious, viewNext: control)
+      iiLayout.stackVertically(currentPrevious, viewNext: control, margin: 15)
     } else {
       if let currentSuperview = control.superview {
         iiLayout.alignTop(control, anotherView: currentSuperview)
@@ -130,8 +129,6 @@ class ViewController: UIViewController {
     }
 
     iiLayout.fullWidthInParent(control)
-
-    control.addConstraint(NSLayoutConstraint(item: control, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 100))
 
   }
 
@@ -287,6 +284,13 @@ class ViewController: UIViewController {
 
   private func formatValue(value: Float) -> String {
     return String(format: "%.3f", value)
+  }
+
+  // SliderControllerDelegate
+  // --------------------------
+
+  func sliderControllerDelegate_OnChangeEnded() {
+    animate()
   }
 }
 
