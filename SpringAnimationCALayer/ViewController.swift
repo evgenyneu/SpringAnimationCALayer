@@ -16,9 +16,18 @@ class ViewController: UIViewController {
   let objectMargin: CGFloat = 10
 
   private let controlsData = [
-    "Duration": SliderDefaults(value: 3, minimumValue: 0.01, maximumValue: 5.0),
-    "Damping": SliderDefaults(value: 0.1, minimumValue: 0.01, maximumValue: 0.6),
-    "InitialVelocity": SliderDefaults(value: 1, minimumValue: 0.01, maximumValue: 10.0)
+    ControlData(
+      name: "Duration",
+      defaults: SliderDefaults(value: 3, minimumValue: 0.01, maximumValue: 5.0)
+    ),
+    ControlData(
+      name: "Damping",
+      defaults: SliderDefaults(value: 0.1, minimumValue: 0.01, maximumValue: 0.6)
+    ),
+    ControlData(
+      name: "Initial velocity",
+      defaults: SliderDefaults(value: 1, minimumValue: 0.01, maximumValue: 10.0)
+    )
   ]
 
 //  // Duration
@@ -100,8 +109,8 @@ class ViewController: UIViewController {
   private func createControls() {
     var previousControl:SliderControllerView? = nil
 
-    for (name, defaults) in controlsData {
-      let control = SliderControllerView(name: name, defaults: defaults)
+    for data in controlsData {
+      let control = SliderControllerView(name: data.name, defaults: data.defaults)
       controlsContainer.addSubview(control)
       ViewController.layoutControl(control, previous: previousControl)
       previousControl = control
@@ -113,21 +122,14 @@ class ViewController: UIViewController {
     control.backgroundColor = UIColor.yellowColor()
 
     if let currentPrevious = previous {
-      control.superview?.addConstraints(
-        NSLayoutConstraint.constraintsWithVisualFormat(
-        "V:[previous][control]", options: nil, metrics: nil,
-        views: ["previous": currentPrevious, "control": control]))
+      iiLayout.stackVertically(currentPrevious, viewNext: control)
     } else {
-      control.superview?.addConstraint(
-        NSLayoutConstraint(item: control, attribute: NSLayoutAttribute.Top,
-          relatedBy: NSLayoutRelation.Equal, toItem: control.superview,
-          attribute: NSLayoutAttribute.Top, multiplier: 0, constant: 0))
+      if let currentSuperview = control.superview {
+        iiLayout.alignTop(control, anotherView: currentSuperview)
+      }
     }
 
-    control.superview?.addConstraints(
-      NSLayoutConstraint.constraintsWithVisualFormat(
-        "|[control]|", options: nil, metrics: nil,
-        views: ["control": control]))
+    iiLayout.fullWidthInParent(control)
 
     control.addConstraint(NSLayoutConstraint(item: control, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 100))
 

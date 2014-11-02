@@ -10,6 +10,8 @@
 		2B5B14221A04838D00F88185 /* ObjectContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B14211A04838D00F88185 /* ObjectContainerView.swift */; };
 		2B5B14241A048DE700F88185 /* animation_parameters.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2B5B14231A048DE700F88185 /* animation_parameters.txt */; };
 		2B5B14261A05B10000F88185 /* SliderControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B14251A05B10000F88185 /* SliderControllerView.swift */; };
+		2B5B14291A05BA1600F88185 /* iiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B14281A05BA1600F88185 /* iiLayout.swift */; };
+		2B5B142B1A05BC8700F88185 /* ControlsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B142A1A05BC8700F88185 /* ControlsData.swift */; };
 		2BE88D611A04412400FF13D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D601A04412400FF13D5 /* AppDelegate.swift */; };
 		2BE88D631A04412400FF13D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D621A04412400FF13D5 /* ViewController.swift */; };
 		2BE88D661A04412400FF13D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE88D641A04412400FF13D5 /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 		2B5B14211A04838D00F88185 /* ObjectContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectContainerView.swift; sourceTree = "<group>"; };
 		2B5B14231A048DE700F88185 /* animation_parameters.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = animation_parameters.txt; sourceTree = "<group>"; };
 		2B5B14251A05B10000F88185 /* SliderControllerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderControllerView.swift; sourceTree = "<group>"; };
+		2B5B14281A05BA1600F88185 /* iiLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = iiLayout.swift; path = SpringAnimationCALayer/iiLayout.swift; sourceTree = "<group>"; };
+		2B5B142A1A05BC8700F88185 /* ControlsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlsData.swift; sourceTree = "<group>"; };
 		2BE88D5B1A04412400FF13D5 /* SpringAnimationCALayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpringAnimationCALayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE88D5F1A04412400FF13D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BE88D601A04412400FF13D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,9 +68,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B5B14271A05BA0200F88185 /* Utls */ = {
+			isa = PBXGroup;
+			children = (
+				2B5B14281A05BA1600F88185 /* iiLayout.swift */,
+			);
+			name = Utls;
+			sourceTree = "<group>";
+		};
 		2BE88D521A04412400FF13D5 = {
 			isa = PBXGroup;
 			children = (
+				2B5B14271A05BA0200F88185 /* Utls */,
 				2BE88D5D1A04412400FF13D5 /* SpringAnimationCALayer */,
 				2BE88D731A04412400FF13D5 /* SpringAnimationCALayerTests */,
 				2BE88D5C1A04412400FF13D5 /* Products */,
@@ -92,6 +105,7 @@
 				2B5B14211A04838D00F88185 /* ObjectContainerView.swift */,
 				2B5B14251A05B10000F88185 /* SliderControllerView.swift */,
 				2BE88D801A04472A00FF13D5 /* SliderDefaults.swift */,
+				2B5B142A1A05BC8700F88185 /* ControlsData.swift */,
 				2BE88D671A04412400FF13D5 /* Images.xcassets */,
 				2BE88D691A04412400FF13D5 /* LaunchScreen.xib */,
 				2BE88D5E1A04412400FF13D5 /* Supporting Files */,
@@ -225,9 +239,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B5B142B1A05BC8700F88185 /* ControlsData.swift in Sources */,
 				2BE88D811A04472A00FF13D5 /* SliderDefaults.swift in Sources */,
 				2B5B14221A04838D00F88185 /* ObjectContainerView.swift in Sources */,
 				2B5B14261A05B10000F88185 /* SliderControllerView.swift in Sources */,
+				2B5B14291A05BA1600F88185 /* iiLayout.swift in Sources */,
 				2BE88D631A04412400FF13D5 /* ViewController.swift in Sources */,
 				2BE88D611A04412400FF13D5 /* AppDelegate.swift in Sources */,
 			);
