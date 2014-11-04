@@ -15,14 +15,16 @@ class ViewController: UIViewController, SliderControllerDelegate {
   let objectSize: CGFloat = 50
   let objectMargin: CGFloat = 10
 
+  var displayLinkTimer:CADisplayLink?
+
   private let controlsData = [
     ControlData(
       type: ControlType.duration,
-      defaults: SliderDefaults(value: 3, minimumValue: 0.01, maximumValue: 5.0)
+      defaults: SliderDefaults(value: 2, minimumValue: 0.01, maximumValue: 5.0)
     ),
     ControlData(
       type: ControlType.damping,
-      defaults: SliderDefaults(value: 0.1, minimumValue: 0.01, maximumValue: 2)
+      defaults: SliderDefaults(value: 1.5, minimumValue: 0.01, maximumValue: 2)
     ),
     ControlData(
       type: ControlType.initialVelocity,
@@ -100,7 +102,18 @@ class ViewController: UIViewController, SliderControllerDelegate {
     controlsContainer.backgroundColor = nil
   }
 
+  func onDisplayLinkTimerTicked(timer: CADisplayLink) {
+    println("Display link timer ticked")
+  }
+
+  private func startDisplayLinkTimer() {
+    let timer = CADisplayLink(target: self, selector: "onDisplayLinkTimerTicked:")
+    displayLinkTimer = timer
+    timer.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+  }
+
   private func animate() {
+    startDisplayLinkTimer()
     animateObjectOne()
     animateObjectTwo()
   }
@@ -128,7 +141,12 @@ class ViewController: UIViewController, SliderControllerDelegate {
         let newCenterY = self.objectsContainer.bounds.height / 2
         self.objectOne.frame.origin = CGPoint(x: 0, y: newCenterY)
       },
-      completion: nil)
+      completion: { finished in
+        if let currentDisplayLinkTimer = self.displayLinkTimer {
+          currentDisplayLinkTimer.invalidate()
+          self.displayLinkTimer = nil
+        }
+      })
   }
 
   private func animateObjectTwo() {
