@@ -10,7 +10,7 @@
 import UIKit
 
 class SpringAnimation {
-  // Animates layer with spring animation.
+  // Animates layer with spring effect.
   class func animate(layer: CALayer,
     keypath: String,
     duration: CFTimeInterval,
@@ -32,7 +32,7 @@ class SpringAnimation {
     CATransaction.commit()
   }
 
-  // Creates CAKeyframeAnimation object.
+  // Creates CAKeyframeAnimation object
   class func create(keypath: String,
     duration: CFTimeInterval,
     usingSpringWithDamping: Double,
@@ -79,6 +79,4 @@ class SpringAnimation {
       
     return pow(M_E, -usingSpringWithDamping * x) * cos(initialSpringVelocity * x)
   }
-  
-  
 }
