@@ -16,6 +16,9 @@ class ViewController: UIViewController, SliderControllerDelegate {
   let objectMargin: CGFloat = 10
 
   var displayLinkTimer:CADisplayLink?
+  var displayLinkTick = 0
+
+  var graphData = [GraphPoint]()
 
   private let controlsData = [
     ControlData(
@@ -103,13 +106,39 @@ class ViewController: UIViewController, SliderControllerDelegate {
   }
 
   func onDisplayLinkTimerTicked(timer: CADisplayLink) {
-    println("Display link timer ticked")
+    let positionY = objectOne.layer.presentationLayer().position.y
+
+    graphData.append(
+      GraphPoint(x:Double(timer.timestamp), y:Double(positionY))
+    )
+
+    displayLinkTick++
   }
 
   private func startDisplayLinkTimer() {
+    stopDisplayLinkTimer()
     let timer = CADisplayLink(target: self, selector: "onDisplayLinkTimerTicked:")
-    displayLinkTimer = timer
+    self.displayLinkTimer = timer
     timer.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+  }
+
+  private func stopDisplayLinkTimer() {
+    if let currentDisplayLinkTimer = displayLinkTimer {
+      currentDisplayLinkTimer.invalidate()
+      displayLinkTimer = nil
+      displayLinkTick = 0
+
+      var firstTimestamp: CFTimeInterval = 0
+      if graphData.count > 0 {
+        firstTimestamp = graphData[0].x
+      }
+
+      for point in graphData {
+        println("x: \(point.x - firstTimestamp) y: \(point.y)")
+      }
+
+      graphData = [GraphPoint]()
+    }
   }
 
   private func animate() {
@@ -142,10 +171,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
         self.objectOne.frame.origin = CGPoint(x: 0, y: newCenterY)
       },
       completion: { finished in
-        if let currentDisplayLinkTimer = self.displayLinkTimer {
-          currentDisplayLinkTimer.invalidate()
-          self.displayLinkTimer = nil
-        }
+        self.stopDisplayLinkTimer()
       })
   }
 
@@ -155,7 +181,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
     let dampingMultiplier = Double(10)
     let velocityMultiplier = Double(10)
 
-    let values = springValues(0, toValue: Double(objectsContainer.bounds.height / 2),
+    let values = SpringAnimationValues.values(0, toValue: Double(objectsContainer.bounds.height / 2),
       damping: dampingMultiplier * Double(controlValue(ControlType.damping)),
       initialVelocity: velocityMultiplier * Double(controlValue(ControlType.initialVelocity)))
 
@@ -164,29 +190,6 @@ class ViewController: UIViewController, SliderControllerDelegate {
     animation.duration = CFTimeInterval(controlValue(ControlType.duration))
     objectTwo.layer.removeAllAnimations()
     objectTwo.layer.addAnimation(animation, forKey: "mySpringAnimation")
-  }
-
-  private func springValues(fromValue: Double, toValue: Double,
-    damping: Double, initialVelocity: Double) -> [Double]{
-
-    let numOfPoints = 1000
-    var values = [Double](count: numOfPoints, repeatedValue: 0.0)
-
-    let distanceBetweenValues = toValue - fromValue
-
-    for point in (0..<numOfPoints) {
-      let x = Double(point) / Double(numOfPoints)
-      let valueNormalized = springValueNormalized(x, damping: damping, initialVelocity: initialVelocity)
-
-      let value = toValue - distanceBetweenValues * valueNormalized
-      values[point] = value
-    }
-
-    return values
-  }
-
-  private func springValueNormalized(x: Double, damping: Double, initialVelocity: Double) -> Double {
-    return pow(M_E, -damping * x) * cos(initialVelocity * x)
   }
 
   @IBAction func onGoTapped(sender: AnyObject) {
