@@ -27,11 +27,11 @@ class ViewController: UIViewController, SliderControllerDelegate {
     ),
     ControlData(
       type: ControlType.damping,
-      defaults: SliderDefaults(value: 1.5, minimumValue: 0.01, maximumValue: 2)
+      defaults: SliderDefaults(value: 0.7, minimumValue: 0.01, maximumValue: 2)
     ),
     ControlData(
       type: ControlType.initialVelocity,
-      defaults: SliderDefaults(value: 1, minimumValue: 0.01, maximumValue: 10.0)
+      defaults: SliderDefaults(value: 1.8, minimumValue: 0.01, maximumValue: 10.0)
     )
   ]
 
