@@ -29,3 +29,5 @@ But the `duration`, `usingSpringWithDamping` and `initialSpringVelocity` values
 are different from UIView's arguments.
 
 The goal of this project is to make this CALayer's animation work **exactly** like UIView's for the same arguments.
+
+> Help me, Finn and Jake. You're my only hope.
