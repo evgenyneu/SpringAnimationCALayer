@@ -178,18 +178,14 @@ class ViewController: UIViewController, SliderControllerDelegate {
   private func animateObjectTwo() {
     setObjectTwoPosition(objectsContainer.bounds.height / 2)
 
-    let dampingMultiplier = Double(10)
-    let velocityMultiplier = Double(10)
-
-    let values = SpringAnimationValues.values(0, toValue: Double(objectsContainer.bounds.height / 2),
-      damping: dampingMultiplier * Double(controlValue(ControlType.damping)),
-      initialVelocity: velocityMultiplier * Double(controlValue(ControlType.initialVelocity)))
-
-    let animation = CAKeyframeAnimation(keyPath: "position.y")
-    animation.values = values
-    animation.duration = CFTimeInterval(controlValue(ControlType.duration))
     objectTwo.layer.removeAllAnimations()
-    objectTwo.layer.addAnimation(animation, forKey: "mySpringAnimation")
+
+    SpringAnimation.animate(objectTwo.layer,
+      keypath: "position.y",
+      duration: CFTimeInterval(controlValue(ControlType.duration)),
+      usingSpringWithDamping: Double(controlValue(ControlType.damping)),
+      initialSpringVelocity: Double(controlValue(ControlType.initialVelocity)),
+      fromValue: 0, toValue: Double(objectsContainer.bounds.height / 2), onFinished: nil)
   }
 
   @IBAction func onGoTapped(sender: AnyObject) {
