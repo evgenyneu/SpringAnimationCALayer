@@ -26,7 +26,7 @@ SpringAnimation.animate(myCALayer,
 
 Currently animation looks similar to UIView's method.
 But the `duration`, `usingSpringWithDamping` and `initialSpringVelocity` values
-are different from UIView's arguments.
+are different from those in UIView's method.
 
 ## The Goal
 
