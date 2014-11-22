@@ -4,7 +4,7 @@ This demo app shows how to do spring animation on CALayer. Animation is similar 
 
 ## Usage
 
-1. Copy `SpringAnimation.swift` file to your project.
+1. Copy [SpringAnimation.swift](https://github.com/evgenyneu/SpringAnimationCALayer/blob/master/SpringAnimationCALayer/SpringAnimation.swift) file to your project.
 1. Animate your CALayer's property by calling `SpringAnimation.animate` function.
 
 For example, let's rotate a layer around its X axis in perspective:
