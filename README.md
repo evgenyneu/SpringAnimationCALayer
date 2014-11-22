@@ -1,4 +1,4 @@
-# Animating CALayer with spring effect in iOS.
+# Animating CALayer with spring effect in iOS with Swift.
 
 This is a demo app for iOS written in Swift. It animates CALayer with a spring animation which is similar to UIView's method `animateWithDuration(_:delay:usingSpringWithDamping:...)`.
 
