@@ -7,16 +7,20 @@ This is a demo app for iOS. It animates CALayer with a spring animation which is
 1. Copy `SpringAnimation.swift` file to your project.
 1. Animate your CALayer's property by calling `SpringAnimation.animate` function.
 
-For example:
+For example, let's rotate a layer around its X axis in perspective:
 
 ```
+var transform = CATransform3DIdentity
+transform.m34 = -1.0/100.0
+myCALayer.transform = CATransform3DRotate(transform, CGFloat(M_PI), 1, 0, 0)
+
 SpringAnimation.animate(myCALayer,
-  keypath: "position.y",
+  keypath: "transform.rotation.x",
   duration: 2.0,
   usingSpringWithDamping: 0.7,
   initialSpringVelocity: 1.8,
   fromValue: 0,
-  toValue: M_PI,
+  toValue: Double(M_PI),
   onFinished: nil)
 ```
 
