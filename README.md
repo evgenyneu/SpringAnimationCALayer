@@ -9,7 +9,7 @@ This demo app shows how to do spring animation on CALayer. Animation is similar 
 
 For example, let's rotate a layer around its X axis in perspective:
 
-```
+```Swift
 var transform = CATransform3DIdentity
 transform.m34 = -1.0/100.0
 myCALayer.transform = CATransform3DRotate(transform, CGFloat(M_PI), 1, 0, 0)
