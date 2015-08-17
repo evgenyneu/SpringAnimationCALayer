@@ -28,6 +28,10 @@ Currently animation looks similar to UIView's method.
 But the `duration`, `usingSpringWithDamping` and `initialSpringVelocity` values
 are different from those in UIView's method.
 
+## Formula
+
+
+
 ## The Goal
 
 The goal of this project is to make this CALayer's animation work **exactly** like UIView's for the same arguments.
