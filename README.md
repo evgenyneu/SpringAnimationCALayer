@@ -30,6 +30,9 @@ are different from those in UIView's method.
 
 ## Formula
 
+Here is the formula that I am currently using for animation. 
+
+<img src='https://raw.githubusercontent.com/evgenyneu/SpringAnimationCALayer/master/graphics/graph/spring_with_damping_formula.png' width='473' alt='Spring animation formula'>
 
 
 ## The Goal
