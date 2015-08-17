@@ -40,4 +40,4 @@ The goal of this project is to make this CALayer's animation work **exactly** li
 
 ## •ᴥ•
 
-<img src='https://raw.githubusercontent.com/evgenyneu/SpringAnimationCALayer/master/graphics/calayer-animation-demo-swift.png' width='320' alt='Spring animation for CALayer in iOS with Swift'>
+<img src='https://raw.githubusercontent.com/evgenyneu/SpringAnimationCALayer/master/graphics/calayer_animation.gif'  alt='Spring animation for CALayer in iOS with Swift'>
