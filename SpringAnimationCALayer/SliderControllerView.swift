@@ -9,25 +9,32 @@
 import UIKit
 
 class SliderControllerView: UIView {
-  private let type: ControlType!
-  private let label: UILabel!
-  private let slider: UISlider!
-  private let delegate: SliderControllerDelegate!
+  private var type: ControlType!
+  private var label: UILabel!
+  private var slider: UISlider!
+  private var delegate: SliderControllerDelegate!
 
-  init(type: ControlType, defaults: SliderDefaults, delegate: SliderControllerDelegate) {
-    super.init()
-
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  func setup(type: ControlType, defaults: SliderDefaults, delegate: SliderControllerDelegate) {
     self.type = type
     self.delegate = delegate
-
-    setTranslatesAutoresizingMaskIntoConstraints(false)
-
+    
+    translatesAutoresizingMaskIntoConstraints = false
+    
     label = UILabel()
     configureLabel()
-
+    
     slider = UISlider()
+    
     configureSlider(slider)
-
+    
     SliderDefaults.set(slider, defaults: defaults)
     SliderControllerView.updateSliderLabel(slider, label: label, caption: type.rawValue)
   }
@@ -37,7 +44,7 @@ class SliderControllerView: UIView {
   }
 
   private func configureLabel() {
-    label.setTranslatesAutoresizingMaskIntoConstraints(false)
+    label.translatesAutoresizingMaskIntoConstraints = false
     addSubview(label)
 
     SliderControllerView.positionLabel(label, superview: self)
@@ -49,7 +56,7 @@ class SliderControllerView: UIView {
   }
 
   private func configureSlider(slider: UISlider) {
-    slider.setTranslatesAutoresizingMaskIntoConstraints(false)
+    slider.translatesAutoresizingMaskIntoConstraints = false
     addSubview(slider)
 
     slider.addTarget(self, action: "sliderChanged:", forControlEvents: UIControlEvents.ValueChanged)
@@ -72,13 +79,7 @@ class SliderControllerView: UIView {
     label.text = "\(caption): \(formatValue(slider.value))"
   }
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-  }
-
-  required init(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
+  
 
   private class func positionSlider(caption: UIView, slider: UIView, superview: UIView) {
     iiLayout.fullWidthInParent(slider)

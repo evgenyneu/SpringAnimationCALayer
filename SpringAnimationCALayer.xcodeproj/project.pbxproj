@@ -18,7 +18,6 @@
 		2B5B14301A05C8A000F88185 /* ControlType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B142F1A05C8A000F88185 /* ControlType.swift */; };
 		2B5B14321A05CD3E00F88185 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B5B14311A05CD3E00F88185 /* Default-568h@2x.png */; };
 		2B87D7F71A20220800CCE0B6 /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B87D7F61A20220800CCE0B6 /* SpringAnimation.swift */; };
-		2B87D7FB1A202B1700CCE0B6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 2B87D7FA1A202B1700CCE0B6 /* README.md */; };
 		2BE88D611A04412400FF13D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D601A04412400FF13D5 /* AppDelegate.swift */; };
 		2BE88D631A04412400FF13D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D621A04412400FF13D5 /* ViewController.swift */; };
 		2BE88D661A04412400FF13D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE88D641A04412400FF13D5 /* Main.storyboard */; };
@@ -211,7 +210,9 @@
 		2BE88D531A04412400FF13D5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Evgenii Neumerzhitckii";
 				TargetAttributes = {
 					2BE88D5A1A04412400FF13D5 = {
@@ -273,7 +274,6 @@
 				2B5B14301A05C8A000F88185 /* ControlType.swift in Sources */,
 				2BE88D811A04472A00FF13D5 /* SliderDefaults.swift in Sources */,
 				2B5B14221A04838D00F88185 /* ObjectContainerView.swift in Sources */,
-				2B87D7FB1A202B1700CCE0B6 /* README.md in Sources */,
 				2B5B142E1A05C57B00F88185 /* SliderControllerDelegate.swift in Sources */,
 				2B06CD9A1A085E8B00643072 /* iiQ.swift in Sources */,
 				2B5B14261A05B10000F88185 /* SliderControllerView.swift in Sources */,
@@ -343,6 +343,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -408,6 +409,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SpringAnimationCALayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evgenii.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -418,6 +420,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SpringAnimationCALayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evgenii.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -436,6 +439,7 @@
 				);
 				INFOPLIST_FILE = SpringAnimationCALayerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evgenii.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpringAnimationCALayer.app/SpringAnimationCALayer";
 			};
@@ -451,6 +455,7 @@
 				);
 				INFOPLIST_FILE = SpringAnimationCALayerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evgenii.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpringAnimationCALayer.app/SpringAnimationCALayer";
 			};

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aqe-Sd-PfO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aqe-Sd-PfO">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-Ev-ZEy" customClass="ObjectContainerView" customModule="SpringAnimationCALayer" customModuleProvider="target">
-                                <rect key="frame" x="470" y="84" width="120" height="508"/>
+                                <rect key="frame" x="460" y="84" width="130" height="508"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9VT-Jw-wS8">
-                                        <rect key="frame" x="5" y="0.0" width="110" height="508"/>
+                                        <rect key="frame" x="5" y="0.0" width="120" height="508"/>
                                         <color key="backgroundColor" red="1" green="0.98187100810000005" blue="0.74804543599999995" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
@@ -30,13 +30,13 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="9VT-Jw-wS8" secondAttribute="trailing" constant="5" id="Nso-lr-40v"/>
                                     <constraint firstAttribute="bottom" secondItem="9VT-Jw-wS8" secondAttribute="bottom" id="ZHe-oY-pE0"/>
-                                    <constraint firstAttribute="width" constant="120" id="nDq-5P-wq9"/>
+                                    <constraint firstAttribute="width" constant="130" id="nDq-5P-wq9"/>
                                     <constraint firstItem="9VT-Jw-wS8" firstAttribute="leading" secondItem="bf1-Ev-ZEy" secondAttribute="leading" constant="5" id="qV8-Hi-sbX"/>
                                     <constraint firstItem="9VT-Jw-wS8" firstAttribute="top" secondItem="bf1-Ev-ZEy" secondAttribute="top" id="tSU-tf-Y6h"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFD-TD-7uv" userLabel="controls view">
-                                <rect key="frame" x="16" y="84" width="446" height="516"/>
+                                <rect key="frame" x="20" y="84" width="432" height="516"/>
                                 <color key="backgroundColor" red="0.46870860689999999" green="1" blue="0.46648216190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
