@@ -79,8 +79,6 @@ class SliderControllerView: UIView {
     label.text = "\(caption): \(formatValue(slider.value))"
   }
 
-  
-
   private class func positionSlider(caption: UIView, slider: UIView, superview: UIView) {
     iiLayout.fullWidthInParent(slider)
     iiLayout.stackVertically(caption, viewNext: slider, margin: 3)
