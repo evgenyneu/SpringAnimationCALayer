@@ -1,18 +1,10 @@
-//
-//  SliderControllerView.swift
-//  SpringAnimationCALayer
-//
-//  Created by Evgenii Neumerzhitckii on 2/11/2014.
-//  Copyright (c) 2014 Evgenii Neumerzhitckii. All rights reserved.
-//
-
 import UIKit
 
 class SliderControllerView: UIView {
   private var type: ControlType!
   private var label: UILabel!
   private var slider: UISlider!
-  private var delegate: SliderControllerDelegate!
+  private weak var delegate: SliderControllerDelegate?
   
   func setup(type: ControlType, defaults: SliderDefaults, delegate: SliderControllerDelegate) {
     self.type = type
@@ -64,7 +56,7 @@ class SliderControllerView: UIView {
   }
 
   func sliderChangeEnded(slider: UISlider) {
-    delegate.sliderControllerDelegate_OnChangeEnded()
+    delegate?.sliderControllerDelegate_OnChangeEnded()
   }
 
   private class func updateSliderLabel(slider: UISlider, label: UILabel, caption: String) {

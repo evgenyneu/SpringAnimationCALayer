@@ -1,12 +1,3 @@
-//
-//  iiQueue.swift
-//
-//  Shortcut functions to run code in asynchronously and in main queue
-//
-//  Created by Evgenii Neumerzhitckii on 11/10/2014.
-//  Copyright (c) 2014 Evgenii Neumerzhitckii. All rights reserved.
-//
-
 import UIKit
 
 class iiQ {
