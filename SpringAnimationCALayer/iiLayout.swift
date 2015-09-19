@@ -12,14 +12,14 @@ class iiLayout {
   class func fullWidthInParent(view: UIView) {
     view.superview?.addConstraints(
       NSLayoutConstraint.constraintsWithVisualFormat(
-        "|[view]|", options: nil, metrics: nil,
+        "|[view]|", options: [], metrics: nil,
         views: ["view": view]))
   }
 
   class func stackVertically(viewPrevious: UIView, viewNext: UIView, margin: Int = 0) {
     viewPrevious.superview?.addConstraints(
       NSLayoutConstraint.constraintsWithVisualFormat(
-        "V:[previous]-\(margin)-[next]", options: nil, metrics: nil,
+        "V:[previous]-\(margin)-[next]", options: [], metrics: nil,
         views: ["previous": viewPrevious, "next": viewNext]))
   }
 
@@ -27,7 +27,7 @@ class iiLayout {
     view.superview?.addConstraint(
       NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top,
         relatedBy: NSLayoutRelation.Equal, toItem: anotherView,
-        attribute: NSLayoutAttribute.Top, multiplier: 0, constant: margin))
+        attribute: NSLayoutAttribute.Top, multiplier: 1, constant: margin))
   }
 
   class func alignBottom(view: UIView, anotherView: UIView, margin:CGFloat = 0) {

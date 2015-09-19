@@ -13,7 +13,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
   @IBOutlet weak var objectsContainer: UIView!
 
   let objectSize: CGFloat = 50
-  let objectMargin: CGFloat = 10
+  let objectMargin: CGFloat = 20
 
   var displayLinkTimer:CADisplayLink?
   var displayLinkTick = 0
@@ -53,16 +53,17 @@ class ViewController: UIViewController, SliderControllerDelegate {
     var previousControl:SliderControllerView? = nil
 
     for data in controlsData {
-      let control = SliderControllerView(type: data.type, defaults: data.defaults, delegate: self)
+      let control = SliderControllerView()
       data.view = control
       controlsContainer.addSubview(control)
+      control.setup(data.type, defaults: data.defaults, delegate: self)
       ViewController.layoutControl(control, previous: previousControl)
       previousControl = control
     }
   }
 
   private class func layoutControl(control: UIView, previous: UIView?) {
-    control.setTranslatesAutoresizingMaskIntoConstraints(false)
+    control.translatesAutoresizingMaskIntoConstraints = false
 
     if let currentPrevious = previous {
       iiLayout.stackVertically(currentPrevious, viewNext: control, margin: 15)
@@ -79,17 +80,30 @@ class ViewController: UIViewController, SliderControllerDelegate {
   private func createObjectOne() {
     objectOne = UIView(frame: CGRect(origin: CGPoint(),
       size: CGSize(width: objectSize, height: objectSize)))
-    objectOne.backgroundColor = UIColor.grayColor()
+    objectOne.backgroundColor = UIColor.darkGrayColor()
     objectsContainer.addSubview(objectOne)
+    createLabel(objectOne, text: "UIView")
   }
 
   private func createObjectTwo() {
     objectTwo = UIView(frame: CGRect(origin: CGPoint(x: objectSize + objectMargin, y: 0),
       size: CGSize(width: objectSize, height: objectSize)))
-    objectTwo.backgroundColor = UIColor.grayColor()
+    objectTwo.backgroundColor = UIColor.darkGrayColor()
     objectsContainer.addSubview(objectTwo)
     objectTwo.layer.anchorPoint = CGPoint(x: 0, y: 0)
     resetObjectTwoPosition()
+    createLabel(objectTwo, text: "CALayer")
+  }
+  
+  private func createLabel(view: UIView, text: String) {
+    let label1 = UILabel(frame: CGRect(origin: CGPoint(x: 0, y: 4), size: CGSize()))
+    label1.text = text
+    label1.font = UIFont.systemFontOfSize(11)
+    label1.clipsToBounds = false
+    label1.transform = CGAffineTransformMakeRotation(CGFloat(M_PI / 2))
+    label1.layer.anchorPoint = CGPoint(x: 0, y: 0)
+    view.addSubview(label1)
+    label1.sizeToFit()
   }
 
   private func resetObjectTwoPosition() {
@@ -106,7 +120,9 @@ class ViewController: UIViewController, SliderControllerDelegate {
   }
 
   func onDisplayLinkTimerTicked(timer: CADisplayLink) {
-    let positionY = objectOne.layer.presentationLayer().position.y
+    guard let presentationLayer = objectOne.layer.presentationLayer() else { return }
+    
+    let positionY = presentationLayer.position.y
 
     graphData.append(
       GraphPoint(x:Double(timer.timestamp), y:Double(positionY))
@@ -134,7 +150,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
       }
 
       for point in graphData {
-        println("x: \(point.x - firstTimestamp) y: \(point.y)")
+        print("x: \(point.x - firstTimestamp) y: \(point.y)")
       }
 
       graphData = [GraphPoint]()
