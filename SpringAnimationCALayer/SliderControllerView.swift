@@ -13,14 +13,6 @@ class SliderControllerView: UIView {
   private var label: UILabel!
   private var slider: UISlider!
   private var delegate: SliderControllerDelegate!
-
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
   
   func setup(type: ControlType, defaults: SliderDefaults, delegate: SliderControllerDelegate) {
     self.type = type
