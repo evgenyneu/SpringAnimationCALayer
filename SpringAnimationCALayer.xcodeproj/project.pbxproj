@@ -25,6 +25,7 @@
 		2BE88D6B1A04412400FF13D5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BE88D691A04412400FF13D5 /* LaunchScreen.xib */; };
 		2BE88D771A04412400FF13D5 /* SpringAnimationCALayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D761A04412400FF13D5 /* SpringAnimationCALayerTests.swift */; };
 		2BE88D811A04472A00FF13D5 /* SliderDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D801A04472A00FF13D5 /* SliderDefaults.swift */; };
+		7E469F781C68626F00B3E962 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E469F771C68626F00B3E962 /* GraphView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		2BE88D751A04412400FF13D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BE88D761A04412400FF13D5 /* SpringAnimationCALayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringAnimationCALayerTests.swift; sourceTree = "<group>"; };
 		2BE88D801A04472A00FF13D5 /* SliderDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDefaults.swift; sourceTree = "<group>"; };
+		7E469F771C68626F00B3E962 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		2BE88D5D1A04412400FF13D5 /* SpringAnimationCALayer */ = {
 			isa = PBXGroup;
 			children = (
+				7E469F761C68626700B3E962 /* GraphView */,
 				2B5B142C1A05C56A00F88185 /* Delegates */,
 				2B5B14231A048DE700F88185 /* animation_parameters.txt */,
 				2BE88D601A04412400FF13D5 /* AppDelegate.swift */,
@@ -164,6 +167,14 @@
 				2BE88D751A04412400FF13D5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7E469F761C68626700B3E962 /* GraphView */ = {
+			isa = PBXGroup;
+			children = (
+				7E469F771C68626F00B3E962 /* GraphView.swift */,
+			);
+			path = GraphView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +287,7 @@
 				2B5B14221A04838D00F88185 /* ObjectContainerView.swift in Sources */,
 				2B5B142E1A05C57B00F88185 /* SliderControllerDelegate.swift in Sources */,
 				2B06CD9A1A085E8B00643072 /* iiQ.swift in Sources */,
+				7E469F781C68626F00B3E962 /* GraphView.swift in Sources */,
 				2B5B14261A05B10000F88185 /* SliderControllerView.swift in Sources */,
 				2B5B14291A05BA1600F88185 /* iiLayout.swift in Sources */,
 				2B06CD9C1A085FD400643072 /* GraphPoint.swift in Sources */,

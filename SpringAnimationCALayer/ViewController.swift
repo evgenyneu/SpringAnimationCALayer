@@ -3,6 +3,7 @@ import UIKit
 class ViewController: UIViewController, SliderControllerDelegate {
   @IBOutlet weak var controlsContainer: UIView!
   @IBOutlet weak var objectsContainer: UIView!
+  @IBOutlet weak var graphView: GraphView!
 
   let objectSize: CGFloat = 50
   let objectMargin: CGFloat = 20
@@ -135,16 +136,8 @@ class ViewController: UIViewController, SliderControllerDelegate {
       currentDisplayLinkTimer.invalidate()
       displayLinkTimer = nil
       displayLinkTick = 0
-
-      var firstTimestamp: CFTimeInterval = 0
-      if graphData.count > 0 {
-        firstTimestamp = graphData[0].x
-      }
-
-      for point in graphData {
-        print("x: \(point.x - firstTimestamp) y: \(point.y)")
-      }
-
+      
+      graphView.drawMotionGraphs(graphData);
       graphData = [GraphPoint]()
     }
   }
@@ -174,12 +167,12 @@ class ViewController: UIViewController, SliderControllerDelegate {
       usingSpringWithDamping: CGFloat(controlValue(ControlType.damping)),
       initialSpringVelocity: CGFloat(controlValue(ControlType.initialVelocity)),
       options: UIViewAnimationOptions.BeginFromCurrentState,
-      animations: {
-        let newCenterY = self.objectsContainer.bounds.height / 2
-        self.objectOne.frame.origin = CGPoint(x: 0, y: newCenterY)
+      animations: { [weak self] in
+        let newCenterY = (self?.objectsContainer.bounds.height ?? 0) / 2
+        self?.objectOne.frame.origin = CGPoint(x: 0, y: newCenterY)
       },
-      completion: { finished in
-        self.stopDisplayLinkTimer()
+      completion: { [weak self] finished in
+        self?.stopDisplayLinkTimer()
       })
   }
 
