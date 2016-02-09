@@ -9,8 +9,6 @@ class ViewController: UIViewController, SliderControllerDelegate {
   let objectMargin: CGFloat = 20
 
   var displayLinkTimer:CADisplayLink?
-  var displayLinkTick = 0
-
   var graphData = [GraphPoint]()
 
   private let controlsData = [
@@ -28,16 +26,16 @@ class ViewController: UIViewController, SliderControllerDelegate {
     )
   ]
 
-  var objectOne: UIView!
-  var objectTwo: UIView!
+  var uiViewBox: UIView!
+  var caLayerBox: UIView!
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     removeBackgroundColor()
 
-    createObjectOne()
-    createObjectTwo()
+    createUiViewBox()
+    createCaLayerBox()
 
     createControls()
   }
@@ -70,22 +68,22 @@ class ViewController: UIViewController, SliderControllerDelegate {
 
   }
 
-  private func createObjectOne() {
-    objectOne = UIView(frame: CGRect(origin: CGPoint(),
+  private func createUiViewBox() {
+    uiViewBox = UIView(frame: CGRect(origin: CGPoint(),
       size: CGSize(width: objectSize, height: objectSize)))
-    objectOne.backgroundColor = UIColor.darkGrayColor()
-    objectsContainer.addSubview(objectOne)
-    createLabel(objectOne, text: "UIView")
+    uiViewBox.backgroundColor = UIColor.redColor()
+    objectsContainer.addSubview(uiViewBox)
+    createLabel(uiViewBox, text: "UIView")
   }
 
-  private func createObjectTwo() {
-    objectTwo = UIView(frame: CGRect(origin: CGPoint(x: objectSize + objectMargin, y: 0),
+  private func createCaLayerBox() {
+    caLayerBox = UIView(frame: CGRect(origin: CGPoint(x: objectSize + objectMargin, y: 0),
       size: CGSize(width: objectSize, height: objectSize)))
-    objectTwo.backgroundColor = UIColor.darkGrayColor()
-    objectsContainer.addSubview(objectTwo)
-    objectTwo.layer.anchorPoint = CGPoint(x: 0, y: 0)
-    resetObjectTwoPosition()
-    createLabel(objectTwo, text: "CALayer")
+    caLayerBox.backgroundColor = UIColor.blueColor()
+    objectsContainer.addSubview(caLayerBox)
+    caLayerBox.layer.anchorPoint = CGPoint(x: 0, y: 0)
+    resetcaLayerBoxPosition()
+    createLabel(caLayerBox, text: "CALayer")
   }
   
   private func createLabel(view: UIView, text: String) {
@@ -99,53 +97,23 @@ class ViewController: UIViewController, SliderControllerDelegate {
     label1.sizeToFit()
   }
 
-  private func resetObjectTwoPosition() {
-    setObjectTwoPosition(0)
+  private func resetcaLayerBoxPosition() {
+    setcaLayerBoxPosition(0)
   }
 
-  private func setObjectTwoPosition(yPosition: CGFloat) {
-    objectTwo.layer.position = CGPoint(x: objectSize + objectMargin, y: yPosition)
+  private func setcaLayerBoxPosition(yPosition: CGFloat) {
+    caLayerBox.layer.position = CGPoint(x: objectSize + objectMargin, y: yPosition)
   }
 
   private func removeBackgroundColor() {
     objectsContainer.backgroundColor = nil
     controlsContainer.backgroundColor = nil
   }
-
-  func onDisplayLinkTimerTicked(timer: CADisplayLink) {
-    guard let presentationLayer = objectOne.layer.presentationLayer() else { return }
-    
-    let positionY = presentationLayer.position.y
-
-    graphData.append(
-      GraphPoint(x:Double(timer.timestamp), y:Double(positionY))
-    )
-
-    displayLinkTick++
-  }
-
-  private func startDisplayLinkTimer() {
-    stopDisplayLinkTimer()
-    let timer = CADisplayLink(target: self, selector: "onDisplayLinkTimerTicked:")
-    self.displayLinkTimer = timer
-    timer.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-  }
-
-  private func stopDisplayLinkTimer() {
-    if let currentDisplayLinkTimer = displayLinkTimer {
-      currentDisplayLinkTimer.invalidate()
-      displayLinkTimer = nil
-      displayLinkTick = 0
-      
-      graphView.drawMotionGraphs(graphData);
-      graphData = [GraphPoint]()
-    }
-  }
-
+  
   private func animate() {
     startDisplayLinkTimer()
-    animateObjectOne()
-    animateObjectTwo()
+    animateUiViewBox()
+    animateCaLayerBox()
   }
 
   private func controlValue(type: ControlType) -> Float {
@@ -158,9 +126,9 @@ class ViewController: UIViewController, SliderControllerDelegate {
     return 0
   }
 
-  private func animateObjectOne() {
-    objectOne.frame.origin = CGPoint(x: 0, y: 0)
-    objectOne.layer.removeAllAnimations()
+  private func animateUiViewBox() {
+    uiViewBox.frame.origin = CGPoint(x: 0, y: 0)
+    uiViewBox.layer.removeAllAnimations()
 
     UIView.animateWithDuration(NSTimeInterval(controlValue(ControlType.duration)),
       delay: 0,
@@ -169,19 +137,22 @@ class ViewController: UIViewController, SliderControllerDelegate {
       options: UIViewAnimationOptions.BeginFromCurrentState,
       animations: { [weak self] in
         let newCenterY = (self?.objectsContainer.bounds.height ?? 0) / 2
-        self?.objectOne.frame.origin = CGPoint(x: 0, y: newCenterY)
+        self?.uiViewBox.frame.origin = CGPoint(x: 0, y: newCenterY)
       },
       completion: { [weak self] finished in
-        self?.stopDisplayLinkTimer()
+        if finished, let graphData = self?.graphData {
+          self?.stopDisplayLinkTimer()
+          self?.graphView.drawMotionGraphs(graphData);
+        }
       })
   }
 
-  private func animateObjectTwo() {
-    setObjectTwoPosition(objectsContainer.bounds.height / 2)
+  private func animateCaLayerBox() {
+    setcaLayerBoxPosition(objectsContainer.bounds.height / 2)
 
-    objectTwo.layer.removeAllAnimations()
+    caLayerBox.layer.removeAllAnimations()
 
-    SpringAnimation.animate(objectTwo.layer,
+    SpringAnimation.animate(caLayerBox.layer,
       keypath: "position.y",
       duration: CFTimeInterval(controlValue(ControlType.duration)),
       usingSpringWithDamping: Double(controlValue(ControlType.damping)),
@@ -193,9 +164,44 @@ class ViewController: UIViewController, SliderControllerDelegate {
     animate()
   }
 
-  // SliderControllerDelegate
+  
+  // MARK: - Record movement
   // --------------------------
-
+  
+  func onDisplayLinkTimerTicked(timer: CADisplayLink) {
+    guard let uiViewBoxPresentationLayer = uiViewBox.layer.presentationLayer() else { return }
+    guard let caLayerBoxPresentationLayer = caLayerBox.layer.presentationLayer() else { return }
+    
+    let uiViewY = uiViewBoxPresentationLayer.position.y
+    let caLayerY = caLayerBoxPresentationLayer.position.y
+    
+    graphData.append(
+      GraphPoint(
+        x: Double(timer.timestamp),
+        uiViewY: Double(uiViewY),
+        caLayerY: Double(caLayerY)
+      )
+    )
+  }
+  
+  private func startDisplayLinkTimer() {
+    stopDisplayLinkTimer()
+    graphData = [GraphPoint]()
+    let timer = CADisplayLink(target: self, selector: "onDisplayLinkTimerTicked:")
+    self.displayLinkTimer = timer
+    timer.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+  }
+  
+  private func stopDisplayLinkTimer() {
+    if let currentDisplayLinkTimer = displayLinkTimer {
+      currentDisplayLinkTimer.invalidate()
+      displayLinkTimer = nil
+    }    
+  }
+  
+  // MARK: SliderControllerDelegate
+  // --------------------------
+  
   func sliderControllerDelegate_OnChangeEnded() {
     animate()
   }

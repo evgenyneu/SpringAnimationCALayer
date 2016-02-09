@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWo-U3-v1K" customClass="GraphView" customModule="SpringAnimationCALayer" customModuleProvider="target">
-                                <rect key="frame" x="20" y="472" width="560" height="128"/>
+                                <rect key="frame" x="5" y="415" width="590" height="180"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="F2B-LJ-Rom"/>
+                                    <constraint firstAttribute="height" constant="180" id="F2B-LJ-Rom"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bf1-Ev-ZEy" customClass="ObjectContainerView" customModule="SpringAnimationCALayer" customModuleProvider="target">
@@ -51,12 +51,12 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bf1-Ev-ZEy" secondAttribute="trailing" constant="10" id="66L-M9-9Pn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mFD-TD-7uv" secondAttribute="bottom" id="BoA-cy-qdW"/>
-                            <constraint firstItem="KWo-U3-v1K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="D2Y-Md-sKC"/>
+                            <constraint firstItem="KWo-U3-v1K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="D2Y-Md-sKC"/>
                             <constraint firstItem="mFD-TD-7uv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="GpO-kf-QWb"/>
                             <constraint firstItem="mFD-TD-7uv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ITA-F8-iFc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KWo-U3-v1K" secondAttribute="trailing" id="LxW-SB-gfu"/>
+                            <constraint firstAttribute="trailing" secondItem="KWo-U3-v1K" secondAttribute="trailing" constant="5" id="LxW-SB-gfu"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bf1-Ev-ZEy" secondAttribute="bottom" constant="8" symbolic="YES" id="R26-rf-gL8"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KWo-U3-v1K" secondAttribute="bottom" id="fli-ji-lTf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="KWo-U3-v1K" secondAttribute="bottom" constant="5" id="fli-ji-lTf"/>
                             <constraint firstItem="bf1-Ev-ZEy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="p0Z-Xf-Txq"/>
                             <constraint firstItem="bf1-Ev-ZEy" firstAttribute="leading" secondItem="mFD-TD-7uv" secondAttribute="trailing" constant="8" symbolic="YES" id="rzo-Oz-av8"/>
                         </constraints>

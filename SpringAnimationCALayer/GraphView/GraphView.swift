@@ -6,15 +6,39 @@ class GraphView: UIView {
   
   override func drawRect(rect: CGRect) {
     let context = UIGraphicsGetCurrentContext()
-    CGContextBeginPath(context)
     
+    // Draw UIView box Graph
+    // ------------
+    
+    CGContextBeginPath(context)
+    CGContextSetStrokeColorWithColor(context, UIColor.redColor().CGColor);
     var firstPoint = true
     
     for graphPoint in graphData {
       if firstPoint {
-        CGContextMoveToPoint(context, (CGFloat)(graphPoint.x), (CGFloat)(graphPoint.y))
+        CGContextMoveToPoint(context, (CGFloat)(graphPoint.x), (CGFloat)(graphPoint.uiViewY))
       } else {
-        CGContextAddLineToPoint(context, (CGFloat)(graphPoint.x), (CGFloat)(graphPoint.y))
+        CGContextAddLineToPoint(context, (CGFloat)(graphPoint.x), (CGFloat)(graphPoint.uiViewY))
+      }
+      
+      firstPoint = false;
+    }
+    
+    CGContextStrokePath(context)
+
+    
+    // Draw CALayer box Graph
+    // ------------
+    
+    CGContextBeginPath(context)
+    CGContextSetStrokeColorWithColor(context, UIColor.blueColor().CGColor);
+    firstPoint = true
+    
+    for graphPoint in graphData {
+      if firstPoint {
+        CGContextMoveToPoint(context, (CGFloat)(graphPoint.x), (CGFloat)(graphPoint.caLayerY))
+      } else {
+        CGContextAddLineToPoint(context, (CGFloat)(graphPoint.x), (CGFloat)(graphPoint.caLayerY))
       }
       
       firstPoint = false;
@@ -24,6 +48,7 @@ class GraphView: UIView {
   }
   
   func drawMotionGraphs(pointsToDraw: [GraphPoint]) {
+    if pointsToDraw.isEmpty { return }
     graphData = shiftXZero(pointsToDraw)
     graphData = scaleXToFillWidth(graphData)
     graphData = scaleYToFillHeight(graphData)
@@ -42,7 +67,12 @@ class GraphView: UIView {
     var normalized = [GraphPoint]()
     
     for point in dataPoints {
-      let normalizedPoint = GraphPoint(x:Double(point.x - firstTimestamp), y:Double(point.y));
+      let normalizedPoint = GraphPoint(
+        x :Double(point.x - firstTimestamp),
+        uiViewY: Double(point.uiViewY),
+        caLayerY: Double(point.caLayerY)
+      );
+      
       normalized.append(normalizedPoint)
     }
 
@@ -61,7 +91,11 @@ class GraphView: UIView {
     var normalized = [GraphPoint]()
     
     for point in dataPoints {
-      let normalizedPoint = GraphPoint(x: point.x * scale, y: point.y);
+      let normalizedPoint = GraphPoint(
+        x: point.x * scale,
+        uiViewY: Double(point.uiViewY),
+        caLayerY: Double(point.caLayerY));
+      
       normalized.append(normalizedPoint)
     }
     
@@ -76,8 +110,11 @@ class GraphView: UIView {
     var maxY: Double = -100_000_000
     
     for point in dataPoints {
-      if point.y > maxY { maxY = point.y }
-      if point.y < minY { minY = point.y }
+      if point.uiViewY > maxY { maxY = point.uiViewY }
+      if point.uiViewY < minY { minY = point.uiViewY }
+      
+      if point.caLayerY > maxY { maxY = point.caLayerY }
+      if point.caLayerY < minY { minY = point.caLayerY }
     }
     
     var heightSpan = maxY - minY;
@@ -90,7 +127,12 @@ class GraphView: UIView {
     var normalized = [GraphPoint]()
     
     for point in dataPoints {
-      let normalizedPoint = GraphPoint(x: point.x, y: point.y * scaleY - minY);
+      let normalizedPoint = GraphPoint(
+        x: point.x,
+        uiViewY: point.uiViewY * scaleY - minY,
+        caLayerY: point.caLayerY * scaleY - minY
+      );
+      
       normalized.append(normalizedPoint)
     }
     

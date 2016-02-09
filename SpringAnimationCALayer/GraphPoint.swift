@@ -2,5 +2,6 @@ import Foundation
 
 struct GraphPoint {
   let x: Double
-  let y: Double
+  let uiViewY: Double
+  let caLayerY: Double
 }
