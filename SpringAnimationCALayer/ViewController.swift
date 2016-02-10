@@ -14,15 +14,31 @@ class ViewController: UIViewController, SliderControllerDelegate {
   private let controlsData = [
     ControlData(
       type: ControlType.duration,
-      defaults: SliderDefaults(value: 2, minimumValue: 0.01, maximumValue: 5.0)
+      defaults: SliderDefaults(value: 1, minimumValue: 0.01, maximumValue: 3)
     ),
     ControlData(
       type: ControlType.damping,
-      defaults: SliderDefaults(value: 0.7, minimumValue: 0.01, maximumValue: 2)
+      defaults: SliderDefaults(value: 0.1, minimumValue: 0.01, maximumValue: 1)
     ),
     ControlData(
       type: ControlType.initialVelocity,
-      defaults: SliderDefaults(value: 1.8, minimumValue: 0.01, maximumValue: 10.0)
+      defaults: SliderDefaults(value: 1, minimumValue: 0.01, maximumValue: 10)
+    ),
+    ControlData(
+      type: ControlType.a,
+      defaults: SliderDefaults(value: 12, minimumValue: 0.01, maximumValue: 30)
+    ),
+    ControlData(
+      type: ControlType.b,
+      defaults: SliderDefaults(value: 2.71, minimumValue: 0.01, maximumValue: 50)
+    ),
+    ControlData(
+      type: ControlType.c,
+      defaults: SliderDefaults(value: 1, minimumValue: 0.01, maximumValue: 10)
+    ),
+    ControlData(
+      type: ControlType.d,
+      defaults: SliderDefaults(value: 1, minimumValue: 0.01, maximumValue: 10)
     )
   ]
 
@@ -79,7 +95,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
   private func createCaLayerBox() {
     caLayerBox = UIView(frame: CGRect(origin: CGPoint(x: objectSize + objectMargin, y: 0),
       size: CGSize(width: objectSize, height: objectSize)))
-    caLayerBox.backgroundColor = UIColor.blueColor()
+    caLayerBox.backgroundColor = UIColor.greenColor()
     objectsContainer.addSubview(caLayerBox)
     caLayerBox.layer.anchorPoint = CGPoint(x: 0, y: 0)
     resetcaLayerBoxPosition()
@@ -129,12 +145,15 @@ class ViewController: UIViewController, SliderControllerDelegate {
   private func animateUiViewBox() {
     uiViewBox.frame.origin = CGPoint(x: 0, y: 0)
     uiViewBox.layer.removeAllAnimations()
+    
+    let springVelocity = CGFloat(controlValue(ControlType.damping))
+    let initialVelocity = CGFloat(controlValue(ControlType.initialVelocity))
 
     UIView.animateWithDuration(NSTimeInterval(controlValue(ControlType.duration)),
       delay: 0,
-      usingSpringWithDamping: CGFloat(controlValue(ControlType.damping)),
-      initialSpringVelocity: CGFloat(controlValue(ControlType.initialVelocity)),
-      options: UIViewAnimationOptions.BeginFromCurrentState,
+      usingSpringWithDamping: springVelocity,
+      initialSpringVelocity: initialVelocity,
+      options: UIViewAnimationOptions.AllowUserInteraction,
       animations: { [weak self] in
         let newCenterY = (self?.objectsContainer.bounds.height ?? 0) / 2
         self?.uiViewBox.frame.origin = CGPoint(x: 0, y: newCenterY)
@@ -142,7 +161,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
       completion: { [weak self] finished in
         if finished, let graphData = self?.graphData {
           self?.stopDisplayLinkTimer()
-          self?.graphView.drawMotionGraphs(graphData);
+          self?.graphView.drawMotionGraphs(graphData)
         }
       })
   }
@@ -152,9 +171,17 @@ class ViewController: UIViewController, SliderControllerDelegate {
 
     caLayerBox.layer.removeAllAnimations()
 
+    let params = SpringAnimationParameters(
+      a: Double(controlValue(ControlType.a)),
+      b: Double(controlValue(ControlType.b)),
+      c: Double(controlValue(ControlType.c)),
+      d: Double(controlValue(ControlType.d))
+    )
+    
     SpringAnimation.animate(caLayerBox.layer,
       keypath: "position.y",
       duration: CFTimeInterval(controlValue(ControlType.duration)),
+      params: params,
       usingSpringWithDamping: Double(controlValue(ControlType.damping)),
       initialSpringVelocity: Double(controlValue(ControlType.initialVelocity)),
       fromValue: 0, toValue: Double(objectsContainer.bounds.height / 2), onFinished: nil)
@@ -174,6 +201,10 @@ class ViewController: UIViewController, SliderControllerDelegate {
     
     let uiViewY = uiViewBoxPresentationLayer.position.y
     let caLayerY = caLayerBoxPresentationLayer.position.y
+    
+    if !uiViewY.isFinite || !caLayerY.isFinite {
+      return
+    }
     
     graphData.append(
       GraphPoint(

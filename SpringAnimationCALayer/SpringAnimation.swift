@@ -5,6 +5,7 @@ class SpringAnimation {
   class func animate(layer: CALayer,
     keypath: String,
     duration: CFTimeInterval,
+    params: SpringAnimationParameters,
     usingSpringWithDamping: Double,
     initialSpringVelocity: Double,
     fromValue: Double,
@@ -15,6 +16,7 @@ class SpringAnimation {
     CATransaction.setCompletionBlock(onFinished)
 
     let animation = create(keypath, duration: duration,
+      params: params,
       usingSpringWithDamping: usingSpringWithDamping,
       initialSpringVelocity: initialSpringVelocity,
       fromValue: fromValue, toValue: toValue)
@@ -26,17 +28,16 @@ class SpringAnimation {
   // Creates CAKeyframeAnimation object
   class func create(keypath: String,
     duration: CFTimeInterval,
+    params: SpringAnimationParameters,
     usingSpringWithDamping: Double,
     initialSpringVelocity: Double,
     fromValue: Double,
     toValue: Double) -> CAKeyframeAnimation {
 
-    let dampingMultiplier = Double(10)
-    let velocityMultiplier = Double(10)
-
     let values = animationValues(fromValue, toValue: toValue,
-      usingSpringWithDamping: dampingMultiplier * usingSpringWithDamping,
-      initialSpringVelocity: velocityMultiplier * initialSpringVelocity)
+      params: params,
+      usingSpringWithDamping: usingSpringWithDamping,
+      initialSpringVelocity: initialSpringVelocity)
 
     let animation = CAKeyframeAnimation(keyPath: keypath)
     animation.values = values
@@ -46,6 +47,7 @@ class SpringAnimation {
   }
 
   class func animationValues(fromValue: Double, toValue: Double,
+    params: SpringAnimationParameters,
     usingSpringWithDamping: Double, initialSpringVelocity: Double) -> [Double]{
 
     let numOfPoints = 500
@@ -56,6 +58,7 @@ class SpringAnimation {
     for point in (0..<numOfPoints) {
       let x = Double(point) / Double(numOfPoints)
       let valueNormalized = animationValuesNormalized(x,
+        params: params,
         usingSpringWithDamping: usingSpringWithDamping, initialSpringVelocity: initialSpringVelocity)
 
       let value = toValue - distanceBetweenValues * valueNormalized
@@ -65,9 +68,11 @@ class SpringAnimation {
     return values
   }
 
-  private class func animationValuesNormalized(x: Double, usingSpringWithDamping: Double,
+  private class func animationValuesNormalized(x: Double,
+    params: SpringAnimationParameters,
+    usingSpringWithDamping: Double,
     initialSpringVelocity: Double) -> Double {
       
-    return pow(M_E, -usingSpringWithDamping * x) * cos(initialSpringVelocity * x)
+    return pow(params.b, -usingSpringWithDamping * params.a * x) * cos(sqrt(pow(usingSpringWithDamping, -2) - 1 ) * x)
   }
 }

@@ -31,7 +31,7 @@ class GraphView: UIView {
     // ------------
     
     CGContextBeginPath(context)
-    CGContextSetStrokeColorWithColor(context, UIColor.blueColor().CGColor);
+    CGContextSetStrokeColorWithColor(context, UIColor.greenColor().CGColor);
     firstPoint = true
     
     for graphPoint in graphData {
@@ -113,8 +113,8 @@ class GraphView: UIView {
       if point.uiViewY > maxY { maxY = point.uiViewY }
       if point.uiViewY < minY { minY = point.uiViewY }
       
-      if point.caLayerY > maxY { maxY = point.caLayerY }
-      if point.caLayerY < minY { minY = point.caLayerY }
+//      if point.caLayerY > maxY { maxY = point.caLayerY }
+//      if point.caLayerY < minY { minY = point.caLayerY }
     }
     
     var heightSpan = maxY - minY;
@@ -129,8 +129,8 @@ class GraphView: UIView {
     for point in dataPoints {
       let normalizedPoint = GraphPoint(
         x: point.x,
-        uiViewY: point.uiViewY * scaleY - minY,
-        caLayerY: point.caLayerY * scaleY - minY
+        uiViewY: (point.uiViewY - minY) * scaleY,
+        caLayerY: (point.caLayerY - minY) * scaleY
       );
       
       normalized.append(normalizedPoint)

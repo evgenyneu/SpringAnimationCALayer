@@ -26,6 +26,7 @@
 		2BE88D771A04412400FF13D5 /* SpringAnimationCALayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D761A04412400FF13D5 /* SpringAnimationCALayerTests.swift */; };
 		2BE88D811A04472A00FF13D5 /* SliderDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE88D801A04472A00FF13D5 /* SliderDefaults.swift */; };
 		7E469F781C68626F00B3E962 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E469F771C68626F00B3E962 /* GraphView.swift */; };
+		7EF8C6411C6B31B1007B12AC /* SpringAnimationParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8C6401C6B31B1007B12AC /* SpringAnimationParameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		2BE88D761A04412400FF13D5 /* SpringAnimationCALayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringAnimationCALayerTests.swift; sourceTree = "<group>"; };
 		2BE88D801A04472A00FF13D5 /* SliderDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDefaults.swift; sourceTree = "<group>"; };
 		7E469F771C68626F00B3E962 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		7EF8C6401C6B31B1007B12AC /* SpringAnimationParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringAnimationParameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				2BE88D621A04412400FF13D5 /* ViewController.swift */,
 				2BE88D641A04412400FF13D5 /* Main.storyboard */,
 				2B5B14211A04838D00F88185 /* ObjectContainerView.swift */,
+				7EF8C6401C6B31B1007B12AC /* SpringAnimationParameters.swift */,
 				2B87D7F61A20220800CCE0B6 /* SpringAnimation.swift */,
 				2B5B14251A05B10000F88185 /* SliderControllerView.swift */,
 				2BE88D801A04472A00FF13D5 /* SliderDefaults.swift */,
@@ -290,6 +293,7 @@
 				7E469F781C68626F00B3E962 /* GraphView.swift in Sources */,
 				2B5B14261A05B10000F88185 /* SliderControllerView.swift in Sources */,
 				2B5B14291A05BA1600F88185 /* iiLayout.swift in Sources */,
+				7EF8C6411C6B31B1007B12AC /* SpringAnimationParameters.swift in Sources */,
 				2B06CD9C1A085FD400643072 /* GraphPoint.swift in Sources */,
 				2B87D7F71A20220800CCE0B6 /* SpringAnimation.swift in Sources */,
 				2BE88D631A04412400FF13D5 /* ViewController.swift in Sources */,
