@@ -73,6 +73,6 @@ class SpringAnimation {
     usingSpringWithDamping: Double,
     initialSpringVelocity: Double) -> Double {
       
-    return pow(params.b, -usingSpringWithDamping * params.a * x) * cos(sqrt(pow(usingSpringWithDamping, -2) - 1 ) * x)
+    return pow(M_E, -pow(usingSpringWithDamping, params.b) * params.a * x) * cos(sqrt(pow(usingSpringWithDamping, -2) - 1 ) * x)
   }
 }
