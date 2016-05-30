@@ -187,7 +187,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
   private func startDisplayLinkTimer() {
     stopDisplayLinkTimer()
     graphData = [GraphPoint]()
-    let timer = CADisplayLink(target: self, selector: "onDisplayLinkTimerTicked:")
+    let timer = CADisplayLink(target: self, selector: #selector(ViewController.onDisplayLinkTimerTicked(_:)))
     self.displayLinkTimer = timer
     timer.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
   }

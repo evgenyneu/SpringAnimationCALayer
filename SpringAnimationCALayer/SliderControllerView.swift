@@ -43,9 +43,9 @@ class SliderControllerView: UIView {
     slider.translatesAutoresizingMaskIntoConstraints = false
     addSubview(slider)
 
-    slider.addTarget(self, action: "sliderChanged:", forControlEvents: UIControlEvents.ValueChanged)
+    slider.addTarget(self, action: #selector(SliderControllerView.sliderChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
-    slider.addTarget(self, action: "sliderChangeEnded:", forControlEvents: UIControlEvents.TouchUpInside)
+    slider.addTarget(self, action: #selector(SliderControllerView.sliderChangeEnded(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
 
     SliderControllerView.positionSlider(label, slider: slider, superview: self)
