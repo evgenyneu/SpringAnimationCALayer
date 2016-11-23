@@ -1,8 +1,12 @@
 import UIKit
 
+/**
+Animating CALayer with spring effect in iOS.
+https://github.com/evgenyneu/SpringAnimationCALayer
+*/
 class SpringAnimation {
   // Animates layer with spring effect.
-  class func animate(layer: CALayer,
+  class func animate(_ layer: CALayer,
     keypath: String,
     duration: CFTimeInterval,
     usingSpringWithDamping: Double,
@@ -19,12 +23,12 @@ class SpringAnimation {
       initialSpringVelocity: initialSpringVelocity,
       fromValue: fromValue, toValue: toValue)
 
-    layer.addAnimation(animation, forKey: keypath + " spring animation")
+    layer.add(animation, forKey: keypath + " spring animation")
     CATransaction.commit()
   }
 
   // Creates CAKeyframeAnimation object
-  class func create(keypath: String,
+  class func create(_ keypath: String,
     duration: CFTimeInterval,
     usingSpringWithDamping: Double,
     initialSpringVelocity: Double,
@@ -45,11 +49,11 @@ class SpringAnimation {
     return animation
   }
 
-  class func animationValues(fromValue: Double, toValue: Double,
+  class func animationValues(_ fromValue: Double, toValue: Double,
     usingSpringWithDamping: Double, initialSpringVelocity: Double) -> [Double]{
 
     let numOfPoints = 500
-    var values = [Double](count: numOfPoints, repeatedValue: 0.0)
+    var values = [Double](repeating: 0.0, count: numOfPoints)
 
     let distanceBetweenValues = toValue - fromValue
 
@@ -65,7 +69,7 @@ class SpringAnimation {
     return values
   }
 
-  private class func animationValuesNormalized(x: Double, usingSpringWithDamping: Double,
+  fileprivate class func animationValuesNormalized(_ x: Double, usingSpringWithDamping: Double,
     initialSpringVelocity: Double) -> Double {
       
     return pow(M_E, -usingSpringWithDamping * x) * cos(initialSpringVelocity * x)

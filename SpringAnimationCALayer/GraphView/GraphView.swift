@@ -4,50 +4,50 @@ import UIKit
 class GraphView: UIView {
   var graphData = [GraphPoint]()
   
-  override func drawRect(rect: CGRect) {
+  override func draw(_ rect: CGRect) {
     let context = UIGraphicsGetCurrentContext()
     
     // Draw UIView box Graph
     // ------------
     
-    CGContextBeginPath(context)
-    CGContextSetStrokeColorWithColor(context, UIColor.redColor().CGColor);
+    context?.beginPath()
+    context?.setStrokeColor(UIColor.red.cgColor);
     var firstPoint = true
     
     for graphPoint in graphData {
       if firstPoint {
-        CGContextMoveToPoint(context, (CGFloat)(graphPoint.x), (CGFloat)(graphPoint.uiViewY))
+        context?.move(to: CGPoint(x: (CGFloat)(graphPoint.x), y: (CGFloat)(graphPoint.uiViewY)))
       } else {
-        CGContextAddLineToPoint(context, (CGFloat)(graphPoint.x), (CGFloat)(graphPoint.uiViewY))
+        context?.addLine(to: CGPoint(x: (CGFloat)(graphPoint.x), y: (CGFloat)(graphPoint.uiViewY)))
       }
       
       firstPoint = false;
     }
     
-    CGContextStrokePath(context)
+    context?.strokePath()
 
     
     // Draw CALayer box Graph
     // ------------
     
-    CGContextBeginPath(context)
-    CGContextSetStrokeColorWithColor(context, UIColor.blueColor().CGColor);
+    context?.beginPath()
+    context?.setStrokeColor(UIColor.blue.cgColor);
     firstPoint = true
     
     for graphPoint in graphData {
       if firstPoint {
-        CGContextMoveToPoint(context, (CGFloat)(graphPoint.x), (CGFloat)(graphPoint.caLayerY))
+        context?.move(to: CGPoint(x: (CGFloat)(graphPoint.x), y: (CGFloat)(graphPoint.caLayerY)))
       } else {
-        CGContextAddLineToPoint(context, (CGFloat)(graphPoint.x), (CGFloat)(graphPoint.caLayerY))
+        context?.addLine(to: CGPoint(x: (CGFloat)(graphPoint.x), y: (CGFloat)(graphPoint.caLayerY)))
       }
       
       firstPoint = false;
     }
     
-    CGContextStrokePath(context)
+    context?.strokePath()
   }
   
-  func drawMotionGraphs(pointsToDraw: [GraphPoint]) {
+  func drawMotionGraphs(_ pointsToDraw: [GraphPoint]) {
     if pointsToDraw.isEmpty { return }
     graphData = shiftXZero(pointsToDraw)
     graphData = scaleXToFillWidth(graphData)
@@ -57,7 +57,7 @@ class GraphView: UIView {
   }
   
   // Make the X coordinates start from zero
-  func shiftXZero(dataPoints: [GraphPoint]) -> [GraphPoint] {
+  func shiftXZero(_ dataPoints: [GraphPoint]) -> [GraphPoint] {
     var firstTimestamp: CFTimeInterval = 0
     
     if dataPoints.count > 0 {
@@ -80,7 +80,7 @@ class GraphView: UIView {
   }
   
   // Scale the X coordinates to fill the width of the view
-  func scaleXToFillWidth(dataPoints: [GraphPoint]) -> [GraphPoint] {
+  func scaleXToFillWidth(_ dataPoints: [GraphPoint]) -> [GraphPoint] {
     guard let lastPoint = dataPoints.last else { return [] }
     
     var lastPointX = lastPoint.x
@@ -103,7 +103,7 @@ class GraphView: UIView {
   }
   
   // Scale the Y coordinates to fill the heit of the view
-  func scaleYToFillHeight(dataPoints: [GraphPoint]) -> [GraphPoint] {
+  func scaleYToFillHeight(_ dataPoints: [GraphPoint]) -> [GraphPoint] {
     // Find minimum and maximum Y values
     
     var minY: Double = 100_000_000

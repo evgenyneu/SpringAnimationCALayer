@@ -11,7 +11,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
   var displayLinkTimer:CADisplayLink?
   var graphData = [GraphPoint]()
 
-  private let controlsData = [
+  fileprivate let controlsData = [
     ControlData(
       type: ControlType.duration,
       defaults: SliderDefaults(value: 2, minimumValue: 0.01, maximumValue: 5.0)
@@ -40,7 +40,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
     createControls()
   }
 
-  private func createControls() {
+  fileprivate func createControls() {
     var previousControl:SliderControllerView? = nil
 
     for data in controlsData {
@@ -53,7 +53,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
     }
   }
 
-  private class func layoutControl(control: UIView, previous: UIView?) {
+  fileprivate class func layoutControl(_ control: UIView, previous: UIView?) {
     control.translatesAutoresizingMaskIntoConstraints = false
 
     if let currentPrevious = previous {
@@ -68,55 +68,55 @@ class ViewController: UIViewController, SliderControllerDelegate {
 
   }
 
-  private func createUiViewBox() {
+  fileprivate func createUiViewBox() {
     uiViewBox = UIView(frame: CGRect(origin: CGPoint(),
       size: CGSize(width: objectSize, height: objectSize)))
-    uiViewBox.backgroundColor = UIColor.redColor()
+    uiViewBox.backgroundColor = UIColor.red
     objectsContainer.addSubview(uiViewBox)
     createLabel(uiViewBox, text: "UIView")
   }
 
-  private func createCaLayerBox() {
+  fileprivate func createCaLayerBox() {
     caLayerBox = UIView(frame: CGRect(origin: CGPoint(x: objectSize + objectMargin, y: 0),
       size: CGSize(width: objectSize, height: objectSize)))
-    caLayerBox.backgroundColor = UIColor.blueColor()
+    caLayerBox.backgroundColor = UIColor.blue
     objectsContainer.addSubview(caLayerBox)
     caLayerBox.layer.anchorPoint = CGPoint(x: 0, y: 0)
     resetcaLayerBoxPosition()
     createLabel(caLayerBox, text: "CALayer")
   }
   
-  private func createLabel(view: UIView, text: String) {
+  fileprivate func createLabel(_ view: UIView, text: String) {
     let label1 = UILabel(frame: CGRect(origin: CGPoint(x: 0, y: 4), size: CGSize()))
     label1.text = text
-    label1.font = UIFont.systemFontOfSize(11)
+    label1.font = UIFont.systemFont(ofSize: 11)
     label1.clipsToBounds = false
-    label1.transform = CGAffineTransformMakeRotation(CGFloat(M_PI / 2))
+    label1.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 2))
     label1.layer.anchorPoint = CGPoint(x: 0, y: 0)
     view.addSubview(label1)
     label1.sizeToFit()
   }
 
-  private func resetcaLayerBoxPosition() {
+  fileprivate func resetcaLayerBoxPosition() {
     setcaLayerBoxPosition(0)
   }
 
-  private func setcaLayerBoxPosition(yPosition: CGFloat) {
+  fileprivate func setcaLayerBoxPosition(_ yPosition: CGFloat) {
     caLayerBox.layer.position = CGPoint(x: objectSize + objectMargin, y: yPosition)
   }
 
-  private func removeBackgroundColor() {
+  fileprivate func removeBackgroundColor() {
     objectsContainer.backgroundColor = nil
     controlsContainer.backgroundColor = nil
   }
   
-  private func animate() {
+  fileprivate func animate() {
     startDisplayLinkTimer()
     animateUiViewBox()
     animateCaLayerBox()
   }
 
-  private func controlValue(type: ControlType) -> Float {
+  fileprivate func controlValue(_ type: ControlType) -> Float {
     if let found = (controlsData.filter { $0.type == type }.first) {
       if let sliderView = found.view {
         return sliderView.value
@@ -126,15 +126,15 @@ class ViewController: UIViewController, SliderControllerDelegate {
     return 0
   }
 
-  private func animateUiViewBox() {
+  fileprivate func animateUiViewBox() {
     uiViewBox.frame.origin = CGPoint(x: 0, y: 0)
     uiViewBox.layer.removeAllAnimations()
 
-    UIView.animateWithDuration(NSTimeInterval(controlValue(ControlType.duration)),
+    UIView.animate(withDuration: TimeInterval(controlValue(ControlType.duration)),
       delay: 0,
       usingSpringWithDamping: CGFloat(controlValue(ControlType.damping)),
       initialSpringVelocity: CGFloat(controlValue(ControlType.initialVelocity)),
-      options: UIViewAnimationOptions.BeginFromCurrentState,
+      options: UIViewAnimationOptions.beginFromCurrentState,
       animations: { [weak self] in
         let newCenterY = (self?.objectsContainer.bounds.height ?? 0) / 2
         self?.uiViewBox.frame.origin = CGPoint(x: 0, y: newCenterY)
@@ -147,7 +147,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
       })
   }
 
-  private func animateCaLayerBox() {
+  fileprivate func animateCaLayerBox() {
     setcaLayerBoxPosition(objectsContainer.bounds.height / 2)
 
     caLayerBox.layer.removeAllAnimations()
@@ -160,7 +160,7 @@ class ViewController: UIViewController, SliderControllerDelegate {
       fromValue: 0, toValue: Double(objectsContainer.bounds.height / 2), onFinished: nil)
   }
 
-  @IBAction func onGoTapped(sender: AnyObject) {
+  @IBAction func onGoTapped(_ sender: AnyObject) {
     animate()
   }
 
@@ -168,9 +168,9 @@ class ViewController: UIViewController, SliderControllerDelegate {
   // MARK: - Record movement
   // --------------------------
   
-  func onDisplayLinkTimerTicked(timer: CADisplayLink) {
-    guard let uiViewBoxPresentationLayer = uiViewBox.layer.presentationLayer() else { return }
-    guard let caLayerBoxPresentationLayer = caLayerBox.layer.presentationLayer() else { return }
+  func onDisplayLinkTimerTicked(_ timer: CADisplayLink) {
+    guard let uiViewBoxPresentationLayer = uiViewBox.layer.presentation() else { return }
+    guard let caLayerBoxPresentationLayer = caLayerBox.layer.presentation() else { return }
     
     let uiViewY = uiViewBoxPresentationLayer.position.y
     let caLayerY = caLayerBoxPresentationLayer.position.y
@@ -184,15 +184,15 @@ class ViewController: UIViewController, SliderControllerDelegate {
     )
   }
   
-  private func startDisplayLinkTimer() {
+  fileprivate func startDisplayLinkTimer() {
     stopDisplayLinkTimer()
     graphData = [GraphPoint]()
     let timer = CADisplayLink(target: self, selector: #selector(ViewController.onDisplayLinkTimerTicked(_:)))
     self.displayLinkTimer = timer
-    timer.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+    timer.add(to: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
   }
   
-  private func stopDisplayLinkTimer() {
+  fileprivate func stopDisplayLinkTimer() {
     if let currentDisplayLinkTimer = displayLinkTimer {
       currentDisplayLinkTimer.invalidate()
       displayLinkTimer = nil

@@ -1,12 +1,12 @@
 import UIKit
 
 class SliderControllerView: UIView {
-  private var type: ControlType!
-  private var label: UILabel!
-  private var slider: UISlider!
-  private weak var delegate: SliderControllerDelegate?
+  fileprivate var type: ControlType!
+  fileprivate var label: UILabel!
+  fileprivate var slider: UISlider!
+  fileprivate weak var delegate: SliderControllerDelegate?
   
-  func setup(type: ControlType, defaults: SliderDefaults, delegate: SliderControllerDelegate) {
+  func setup(_ type: ControlType, defaults: SliderDefaults, delegate: SliderControllerDelegate) {
     self.type = type
     self.delegate = delegate
     
@@ -27,49 +27,49 @@ class SliderControllerView: UIView {
     return slider.value
   }
 
-  private func configureLabel() {
+  fileprivate func configureLabel() {
     label.translatesAutoresizingMaskIntoConstraints = false
     addSubview(label)
 
     SliderControllerView.positionLabel(label, superview: self)
   }
 
-  private class func positionLabel(label: UIView, superview: UIView) {
+  fileprivate class func positionLabel(_ label: UIView, superview: UIView) {
     iiLayout.alignTop(label, anotherView: superview)
     iiLayout.fullWidthInParent(label)
   }
 
-  private func configureSlider(slider: UISlider) {
+  fileprivate func configureSlider(_ slider: UISlider) {
     slider.translatesAutoresizingMaskIntoConstraints = false
     addSubview(slider)
 
-    slider.addTarget(self, action: #selector(SliderControllerView.sliderChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+    slider.addTarget(self, action: #selector(SliderControllerView.sliderChanged(_:)), for: UIControlEvents.valueChanged)
 
-    slider.addTarget(self, action: #selector(SliderControllerView.sliderChangeEnded(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+    slider.addTarget(self, action: #selector(SliderControllerView.sliderChangeEnded(_:)), for: UIControlEvents.touchUpInside)
 
 
     SliderControllerView.positionSlider(label, slider: slider, superview: self)
   }
 
-  func sliderChanged(slider: UISlider) {
+  func sliderChanged(_ slider: UISlider) {
     SliderControllerView.updateSliderLabel(slider, label: label, caption: type.rawValue)
   }
 
-  func sliderChangeEnded(slider: UISlider) {
+  func sliderChangeEnded(_ slider: UISlider) {
     delegate?.sliderControllerDelegate_OnChangeEnded()
   }
 
-  private class func updateSliderLabel(slider: UISlider, label: UILabel, caption: String) {
+  fileprivate class func updateSliderLabel(_ slider: UISlider, label: UILabel, caption: String) {
     label.text = "\(caption): \(formatValue(slider.value))"
   }
 
-  private class func positionSlider(caption: UIView, slider: UIView, superview: UIView) {
+  fileprivate class func positionSlider(_ caption: UIView, slider: UIView, superview: UIView) {
     iiLayout.fullWidthInParent(slider)
     iiLayout.stackVertically(caption, viewNext: slider, margin: 3)
     iiLayout.alignBottom(slider, anotherView: superview)
   }
 
-  private class func formatValue(value: Float) -> String {
+  fileprivate class func formatValue(_ value: Float) -> String {
     return String(format: "%.3f", value)
   }
 }

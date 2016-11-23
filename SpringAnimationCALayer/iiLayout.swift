@@ -1,31 +1,31 @@
 import UIKit
 
 class iiLayout {
-  class func fullWidthInParent(view: UIView) {
+  class func fullWidthInParent(_ view: UIView) {
     view.superview?.addConstraints(
-      NSLayoutConstraint.constraintsWithVisualFormat(
-        "|[view]|", options: [], metrics: nil,
+      NSLayoutConstraint.constraints(
+        withVisualFormat: "|[view]|", options: [], metrics: nil,
         views: ["view": view]))
   }
 
-  class func stackVertically(viewPrevious: UIView, viewNext: UIView, margin: Int = 0) {
+  class func stackVertically(_ viewPrevious: UIView, viewNext: UIView, margin: Int = 0) {
     viewPrevious.superview?.addConstraints(
-      NSLayoutConstraint.constraintsWithVisualFormat(
-        "V:[previous]-\(margin)-[next]", options: [], metrics: nil,
+      NSLayoutConstraint.constraints(
+        withVisualFormat: "V:[previous]-\(margin)-[next]", options: [], metrics: nil,
         views: ["previous": viewPrevious, "next": viewNext]))
   }
 
-  class func alignTop(view: UIView, anotherView: UIView, margin:CGFloat = 0) {
+  class func alignTop(_ view: UIView, anotherView: UIView, margin:CGFloat = 0) {
     view.superview?.addConstraint(
-      NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top,
-        relatedBy: NSLayoutRelation.Equal, toItem: anotherView,
-        attribute: NSLayoutAttribute.Top, multiplier: 1, constant: margin))
+      NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.top,
+        relatedBy: NSLayoutRelation.equal, toItem: anotherView,
+        attribute: NSLayoutAttribute.top, multiplier: 1, constant: margin))
   }
 
-  class func alignBottom(view: UIView, anotherView: UIView, margin:CGFloat = 0) {
+  class func alignBottom(_ view: UIView, anotherView: UIView, margin:CGFloat = 0) {
     view.superview?.addConstraint(
-      NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom,
-        relatedBy: NSLayoutRelation.Equal, toItem: anotherView,
-        attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: margin))
+      NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.bottom,
+        relatedBy: NSLayoutRelation.equal, toItem: anotherView,
+        attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: margin))
   }
 }

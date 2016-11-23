@@ -2,16 +2,16 @@ import UIKit
 
 class ObjectContainerView: UIView {
 
-  override func drawRect(rect: CGRect) {
-    super.drawRect(rect)
+  override func draw(_ rect: CGRect) {
+    super.draw(rect)
 
     let context = UIGraphicsGetCurrentContext()
 
-    CGContextSetStrokeColorWithColor(context, UIColor.grayColor().CGColor)
-    CGContextSetLineWidth(context, 1)
-    CGContextMoveToPoint(context, 0, bounds.midY)
-    CGContextAddLineToPoint(context, bounds.width, bounds.midY)
+    context?.setStrokeColor(UIColor.gray.cgColor)
+    context?.setLineWidth(1)
+    context?.move(to: CGPoint(x: 0, y: bounds.midY))
+    context?.addLine(to: CGPoint(x: bounds.width, y: bounds.midY))
 
-    CGContextStrokePath(context)
+    context?.strokePath()
   }
 }
