@@ -17,9 +17,9 @@ myCALayer.transform = CATransform3DRotate(transform, 0, 1, 0, 0)
 
 SpringAnimation.animate(myCALayer,
                         keypath: "transform.rotation.x",
-                        duration: 2.0,
+                        duration: 3.0,
                         usingSpringWithDamping: 0.7,
-                        initialSpringVelocity: 1.8,
+                        initialSpringVelocity: 1.7,
                         fromValue: M_PI,
                         toValue: 0,
                         onFinished: nil)
