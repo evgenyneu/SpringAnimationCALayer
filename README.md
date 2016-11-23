@@ -25,7 +25,7 @@ SpringAnimation.animate(myCALayer,
                         onFinished: nil)
 ```
 
-<img src='https://github.com/evgenyneu/SpringAnimationCALayer/blob/master/graphics/swift_button_flip.gif?raw=true' width='100' alt='Rotate a button around X axis in iOS/Swift'>
+<img src='https://github.com/evgenyneu/SpringAnimationCALayer/blob/master/graphics/swift_button_flip2.gif?raw=true' width='100' alt='Rotate a button around X axis in iOS/Swift'>
 
 
 
